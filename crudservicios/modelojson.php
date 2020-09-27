@@ -275,7 +275,6 @@ $stmt->bindParam(":ID_Producto", $datosModel["ID_Producto"],PDO::PARAM_STR);
         } 
 
 
-
  }
 
 

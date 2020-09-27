@@ -229,7 +229,6 @@ Clasificacion: <select name="ID_clasificacion" id="ID_clasificacion">
          </select></br>
          <input type="submit" value="Guardar">
          
-         
 </form>
 </div>
 </div>
