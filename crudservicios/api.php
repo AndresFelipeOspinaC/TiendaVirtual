@@ -1,5 +1,6 @@
 <?php
 require_once 'controllerjson.php';
+require_once 'modelojson.php';
 
 function ParametrosDisponibles($params){
     $disponible = true;
@@ -377,6 +378,134 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
     break;
 
 
+    case 'updateproducto':
+    ParametrosDisponibles(array('ID_Producto', 'Nombre_Producto','Talla', 'Color', 'Material', 'precio', 'Descripcion', 'ID_categoria', 'ID_clasificacion'));
+
+    if($_POST["ID_Producto"]=="" ||  $_POST["Nombre_Producto"]=="" ||  $_POST["Talla"]=="" || $_POST["Color"]=="" ||  
+
+    $_POST["Material"]=="" || $_POST["precio"]="" || $_POST["ID_categoria"]=="" ||    $_POST["ID_clasificacion"]==""  )
+    
+    {
+    
+        echo " <h3> Hay Datos Vaciós Por Favor Llenarlos </h3>
+        <a href='administraproducto.php'> Volver a Administrar Productos </a>
+        <a href='paneladministrador.php'> Ir a Panel de Administración </a>
+        ";
+    
+        
+    }
+
+
+    else {
+
+
+        $ID_Producto = $_POST["ID_Producto"];
+      
+        
+      
+      
+      $Nombre_Producto = $_POST["Nombre_Producto"];
+      
+      
+      
+      
+      
+      
+      
+      
+      $Imagen_Producto = $_FILES["Imagen_Producto"] ["name"];
+      
+      if(isset($Imagen_Producto) &&  $Imagen_Producto = $_FILES["Imagen_Producto"] ["name"] != ""){
+      $ruta= $_FILES["Imagen_Producto"] ["tmp_name"];
+      $destino="../administrador/Fotos/".$Imagen_Producto;
+      copy($ruta,$destino);
+      }
+      else {
+      
+      $VolverImagen = new Datos();
+      $MostrarImagen= $VolverImagen->volverImagen($ID_Producto,"producto");
+
+      if($MostrarImagen){
+        foreach($MostrarImagen as $rowimagen => $itemimagen){
+        
+        $itemimagen["Imagen_Producto"];
+
+        
+
+      $destino =  $itemimagen.$Imagen_Producto;
+      
+      
+        }}
+      
+      }
+      
+      
+      
+      
+      $Talla = $_POST["Talla"];
+      $Color = $_POST["Color"];
+      
+      $Material = $_POST["Material"];
+      
+      $precio = $_POST["precio"];
+      
+       $ID_categoria = $_POST["ID_categoria"];
+      
+      switch($ID_categoria) {
+      
+      case "Chaquetas": $ID_categoria = "CAT01";
+      break;
+      
+      case "pantalones": $ID_categoria = "CAT02";
+      break;
+      
+      case "Formal": $ID_categoria = "CAT03";
+      break;
+      
+      case "Informal": $ID_categoria = "CAT04";
+      break;
+      
+      case "blusa": $ID_categoria = "CAT05";
+      break;
+      
+      default: "";
+      break;
+      }
+      
+      $ID_clasificacion = $_POST["ID_clasificacion"];
+      
+      switch($ID_clasificacion) {
+      
+      case "Unisex":  $ID_clasificacion = "CLAS01";
+      break;
+      
+      case "Mujeres":  $ID_clasificacion = "CLAS02";
+      break;
+      
+      case "Niños":  $ID_clasificacion = "CLAS03";
+      break;
+      
+      case "Bebes":  $ID_clasificacion = "CLAS04";
+      break;
+      
+      case "Niñas":  $ID_clasificacion = "CLAS05";
+      break;
+      
+      case "Hombres": $ $ID_clasificacion = "CLAS06";
+      break;
+      
+      default: "";
+      break;
+      
+      
+      
+      }
+      
+      $Descripcion = $_POST["Descripcion"];
+    }      
+    
+    $db =new Controllerjson();
+ $result = $db->updateProductoController($ID_Producto,$Nombre_Producto,$destino,$Imagen_Producto,$Talla,$Color,$Material,$precio,$Descripcion,$ID_categoria,$ID_clasificacion);
 
 
     }

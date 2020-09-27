@@ -157,78 +157,68 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </thead>
         <tbody>
           <?php
-
+          require_once("../../crudservicios/modelojson.php");
           $id= $_GET["id"];
 
-          $conectar = mysqli_connect("localhost","root","","trapitos");
+          $producto = new Datos();
+          $mostrarProducto = $producto->editarproducto($id,"producto");
 
-          $query = "SELECT ID_Producto, Nombre_Producto, Imagen_Producto, Talla, Color, Material, precio, Nombre_Categoria, Nombre_Clasificacion,
-          Descripcion 
-          FROM producto
-          join categoria on producto.ID_categoria = categoria.ID_Categoria
-          join clasificacion on producto.ID_clasificacion = clasificacion.ID_Clasificacion
-          where ID_Producto='$id'";
-          $result_tasks = mysqli_query($conectar,$query);    
+          if($mostrarProducto){
 
-          while($row = mysqli_fetch_array($result_tasks)) { ?>
-           <form  action="productoactualizado.php?id=<?php echo $row['ID_Producto'] ?>" method="POST"
+          foreach($mostrarProducto as $row=> $item)
+          
+          {
+          ?>
+           <form  action="http://localhost/TiendaVirtual/crudservicios/api.php?apicall=updateproducto" method="POST"
            enctype="multipart/form-data" >
           <tr>
-            <td> <input type="text" name="Producto"  value="<?php echo $row['ID_Producto']; ?>" /></td>
-            <td> <input type="text" name="Nombre"   value="<?php echo $row['Nombre_Producto']; ?>"/></td>
-            <td><img src="<?php echo $row['Imagen_Producto']?>" width=100 height=100 alt="foto"/> 
-            <input type="file" name="Imagen" />
+            <td> <input type="text" name="ID_Producto"  value="<?php echo $item['ID_Producto']; ?>" /></td>
+            <td> <input type="text" name="Nombre_Producto"   value="<?php echo $item['Nombre_Producto']; ?>"/></td>
+            <td><img src="<?php echo $item['Imagen_Producto']?>" width=100 height=100 alt="foto"/> 
+            <input type="file" value name="Imagen_Producto" />
             </td>
-            <td> <input type="text" name="Talla"   value="<?php echo $row['Talla']; ?>" /></td>
-            <td> <input type="text" name="Color"   value="<?php echo $row['Color']; ?>" /></td>
-            <td><input type="text" name="Material"   value="<?php echo $row['Material']; ?>"/></td>
-            <td><input type="text" name="precio2"   value="<?php echo $row['precio']; ?>"/></td>
-            <td>  <select name="Categoria">
-            <option> <?php echo $row['Nombre_Categoria']?> </option>
+            <td> <input type="text" name="Talla"   value="<?php echo $item['Talla']; ?>" /></td>
+            <td> <input type="text" name="Color"   value="<?php echo $item['Color']; ?>" /></td>
+            <td><input type="text" name="Material"   value="<?php echo $item['Material']; ?>"/></td>
+            <td><input type="text" name="precio"   value="<?php echo $item['precio']; ?>"/></td>
+            <td>  <select name="ID_categoria">
+            <option> <?php echo $item['Nombre_Categoria']?> </option>
             <?php
             
-            $concat = "SELECT Nombre_Categoria from categoria
-            where ID_Categoria <> '$row[Nombre_Categoria]'";
-           
-           $conscat = mysqli_query($conectar,$concat);
+           $Categoria = new Datos();
+           $mostrarCategoria= $Categoria->mostrarCategoria($item["Nombre_Categoria"],"categoria");
 
-           while ($conscatrray = mysqli_fetch_array($conscat)) {
-
-               echo "<option> $conscatrray[Nombre_Categoria] </option>";
-
-
-           };
-
-
+           if($mostrarCategoria){
+            foreach($mostrarCategoria as $rowcat => $itemcat){
 
             ?>
-            </select>
-            </td>
-            <td><select name="Clasificacion"> 
-            <option> <?php echo $row['Nombre_Clasificacion']; ?> </option>
-            <?php
-            
-            $concla = "SELECT Nombre_Clasificacion from clasificacion
-            where ID_Clasificacion <> '$row[Nombre_Clasificacion]'";
-           
-           $conscla = mysqli_query($conectar,$concla);
-
-           while ($consclarray = mysqli_fetch_array($conscla)) {
-
-               echo "<option> $consclarray[Nombre_Clasificacion] </option>";
-
-
-           };
-
-
-
-            ?>
-            
+           <option> <?php echo $itemcat["Nombre_Categoria"]; }} ?> </option>
+          
             
             </select>
             </td>
 
-            <td><input type="text" name="Descripcion"   value="<?php echo $row['Descripcion']; ?>"/></td>
+          <td>
+          <select name="ID_clasificacion" id="">
+
+          <option> <?php echo $item["Nombre_Clasificacion"];  ?></option>
+
+         <?php
+       
+       $Clasificacion = new Datos();
+       $mostrarClasificacion = $Clasificacion->mostrarClasificacion($item["Nombre_Clasificacion"],
+       "clasificacion");
+       if($mostrarClasificacion){
+        foreach($mostrarClasificacion as $rowcla => $itemcla){
+        ?>
+        <option><?php echo $itemcla["Nombre_Clasificacion"]; }}  ?></option>
+        </select>
+      </td>
+
+
+
+
+            <td><input type="text" name="Descripcion"   value="<?php echo $item['Descripcion']; ?>"/></td>
             <td>
             <input type="submit" value="Actualizar Datos"  class="btn btn-secondary" class="botones"/>
                 
@@ -239,7 +229,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </td>
           </tr>
           </form>
-          <?php } ?>
+          <?php }} ?>
         </tbody>
       </table>
     </div>

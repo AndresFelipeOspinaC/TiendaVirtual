@@ -278,6 +278,128 @@ $stmt->bindParam(":ID_Producto", $datosModel["ID_Producto"],PDO::PARAM_STR);
 
  }
 
+ public function editarproducto($ID_Producto,$tabla){
+    $stmt = Database::getconectar()->prepare("SELECT ID_Producto, Nombre_Producto, Imagen_Producto, 
+    Talla, Color, Material, precio, Nombre_Categoria, Nombre_Clasificacion,
+    Descripcion 
+    FROM $tabla
+    join categoria on producto.ID_categoria = categoria.ID_Categoria
+    join clasificacion on producto.ID_clasificacion = clasificacion.ID_Clasificacion
+    where ID_Producto=:ID_Producto");
+
+$stmt->bindParam(":ID_Producto", $ID_Producto,PDO::PARAM_STR);
+        $stmt->execute();
+
+        $stmt->bindParam(":ID_Producto", $ID_Producto,PDO::PARAM_STR);
+        $stmt->bindParam(":Nombre_Producto", $Nombre_Producto,PDO::PARAM_STR);
+        $stmt->bindParam(":Imagen_Producto", $Imagen_Producto,PDO::PARAM_LOB);
+        $stmt->bindParam(":Talla", $Talla,PDO::PARAM_STR);
+        $stmt->bindParam(":Color", $Color,PDO::PARAM_STR);
+        $stmt->bindParam(":Material", $Material,PDO::PARAM_STR);
+        $stmt->bindParam(":precio", $precio,PDO::PARAM_INT);
+        $stmt->bindParam(":Descripcion", $Descripcion,PDO::PARAM_STR);
+        $stmt->bindParam(":ID_categoria", $ID_categoria,PDO::PARAM_STR);
+        $stmt->bindParam(":ID_clasificacion", $ID_clasificacion,PDO::PARAM_STR);
+      
+
+return $stmt->fetchAll();
+
+
+
+
+ }
+
+ public function mostrarCategoria($Nombre_Categoria,$tabla){
+
+    $stmt = Database::getconectar()->prepare("SELECT Nombre_Categoria from $tabla
+    where Nombre_Categoria <> :Nombre_Categoria");
+
+$stmt->bindParam(":Nombre_Categoria", $Nombre_Categoria,PDO::PARAM_STR);
+$stmt->execute();
+
+$stmt->bindParam(":Nombre_Categoria", $Nombre_Categoria,PDO::PARAM_STR);
+        
+return $stmt->fetchAll();
+
+
+ }
+
+ public function mostrarClasificacion($Nombre_Clasificacion,$tabla){
+
+    $stmt = Database::getconectar()->prepare("SELECT Nombre_Clasificacion from $tabla
+    where Nombre_Clasificacion <> :Nombre_Clasificacion");
+
+$stmt->bindParam(":Nombre_Clasificacion", $Nombre_Clasificacion,PDO::PARAM_STR);
+$stmt->execute();
+
+$stmt->bindParam(":Nombre_Clasificacion", $Nombre_Clasificacion,PDO::PARAM_STR);
+        
+return $stmt->fetchAll();
+
+
+ }
+
+ public function volverImagen($ID_Producto,$tabla){
+
+$stmt = Database::getconectar()->prepare("SELECT ID_Producto, Nombre_Producto, Imagen_Producto, 
+Talla, Color, Material, precio, Nombre_Categoria, Nombre_Clasificacion,
+Descripcion 
+FROM $tabla
+join categoria on producto.ID_categoria = categoria.ID_Categoria
+join clasificacion on producto.ID_clasificacion = clasificacion.ID_Clasificacion
+where ID_Producto=:ID_Producto");
+
+$stmt->bindParam(":ID_Producto", $ID_Producto,PDO::PARAM_STR);
+$stmt->execute();
+
+$stmt->bindParam(":ID_Producto", $ID_Producto,PDO::PARAM_STR);
+        $stmt->bindParam(":Nombre_Producto", $Nombre_Producto,PDO::PARAM_STR);
+        $stmt->bindParam(":Imagen_Producto", $IMG,PDO::PARAM_LOB);
+        $stmt->bindParam(":Talla", $Talla,PDO::PARAM_STR);
+        $stmt->bindParam(":Color", $Color,PDO::PARAM_STR);
+        $stmt->bindParam(":Material", $Material,PDO::PARAM_STR);
+        $stmt->bindParam(":precio", $precio,PDO::PARAM_INT);
+        $stmt->bindParam(":Descripcion", $Descripcion,PDO::PARAM_STR);
+        $stmt->bindParam(":Nombre_Categoria", $ID_categoria,PDO::PARAM_STR);
+        $stmt->bindParam(":Nombre_Clasificacion", $ID_clasificacion,PDO::PARAM_STR);
+
+        return $stmt->fetchAll();
+
+
+ }
+
+
+ public function updateProductoModel($datosModel,$tabla){
+
+$IMG = "../Fotos/".$datosModel["IMG"];
+
+$stmt = Database::getconectar()->prepare("UPDATE $tabla set ID_Producto=:ID_Producto,
+Nombre_Producto=:Nombre_Producto,
+Imagen_Producto = :Imagen_Producto,Talla=:Talla,Color=:Color,Material=:Material,precio=:precio,
+Descripcion=:Descripcion,
+ID_categoria=:ID_categoria,ID_clasificacion = :ID_clasificacion
+where ID_Producto = :ID_Producto");
+
+$stmt->bindParam(":ID_Producto", $datosModel["ID_Producto"],PDO::PARAM_STR);
+ $stmt->bindParam(":Nombre_Producto", $datosModel["Nombre_Producto"],PDO::PARAM_STR);
+        $stmt->bindParam(":Imagen_Producto",$IMG,PDO::PARAM_STR);
+        $stmt->bindParam(":Talla", $datosModel["Talla"],PDO::PARAM_STR);
+        $stmt->bindParam(":Color", $datosModel["Color"],PDO::PARAM_STR);
+        $stmt->bindParam(":Material", $datosModel["Material"],PDO::PARAM_STR);
+        $stmt->bindParam(":precio", $datosModel["precio"],PDO::PARAM_INT);
+        $stmt->bindParam(":Descripcion", $datosModel["Descripcion"],PDO::PARAM_STR);
+        $stmt->bindParam(":ID_categoria", $datosModel["ID_categoria"],PDO::PARAM_STR);
+        $stmt->bindParam(":ID_clasificacion", $datosModel["ID_clasificacion"],PDO::PARAM_STR);
+
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        } 
+
+
+
+ }
 
 
 

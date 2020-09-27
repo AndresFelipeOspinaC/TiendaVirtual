@@ -82,5 +82,34 @@ class Controllerjson{
 
 
     }
+
+  public function updateProductoController($ID_Producto,$Nombre_Producto,$destino,$Imagen_Producto,
+  $Talla,$Color,$Material,$precio,$Descripcion,$ID_categoria,$ID_clasificacion){
+
+    $datosController = array("ID_Producto"=>$ID_Producto,
+    "Nombre_Producto"=>$Nombre_Producto,
+    "Imagen_Producto"=>$destino,
+    "IMG"=> $Imagen_Producto,
+    "Talla"=>$Talla,
+    "Color"=>$Color,
+    "Material"=>$Material,
+    "precio"=>$precio,
+    "Descripcion"=>$Descripcion,
+    "ID_categoria"=>$ID_categoria,
+    "ID_clasificacion"=>$ID_clasificacion);
+
+
+    $respuesta = Datos::updateProductoModel($datosController,"producto");
+    return $respuesta;
+
+
+
+  }
+ 
+
+
+
+
+
 }
 ?>
