@@ -35,6 +35,7 @@ header{
     background-attachment:fixed;
     background-position: center;
     background-size: cover;
+    margin-bottom: var(--espacios-contenido);
 }
 nav{
     width: 100%;

@@ -3,7 +3,8 @@
     <head>
     <title>Tienda MT</title>
     <meta charset="utf-8">
-    <link href="estilosesion.css"rel="StyleSheet">
+    <link rel="icon" href="iconos/logomt.PNG"width="100%" height="100%"/>
+    <link href="estiloscss/estilosesion.css"rel="StyleSheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
@@ -28,7 +29,10 @@
                 </div>
             </div>
         </nav>
-
+        <div class="textos">
+            <h1>Mis Trapitos</h1>
+            <h2>Tienda de Ropa Online</h2>
+        </div>
     </header>
 
     <div class="rescon">
