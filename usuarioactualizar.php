@@ -46,7 +46,7 @@ if(isset($_SESSION["usuario"])){
 </div>
   <?php
 
-require("CRUD-SERVICIOS/modelojson.php");
+require("crudservicios/modelojson.php");
 
 $mostrar2 = new Datos();
 
