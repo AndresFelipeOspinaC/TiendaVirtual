@@ -263,6 +263,7 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
         
     break;
 
+
     case 'mostrarcontrasena':
         ParametrosDisponibles(array('Correo','ID_Usuario'));
         $db = new Controllerjson();
@@ -271,6 +272,7 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
       $respuesta = $result;
     break;
     
+
 
 
 

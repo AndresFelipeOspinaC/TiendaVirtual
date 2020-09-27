@@ -4,9 +4,9 @@
     <head>
     <title>Tienda MT</title>
     <meta charset="utf-8">
-    <link rel="icon" href="iconos/logomt.PNG"width="100%" height="100%"/>
+    <link rel="icon" href="../iconos/logomt.PNG"width="100%" height="100%"/>
     <link href="../admin.css"rel="StyleSheet">
-    <link href="../estilomenuusuario.css"rel="StyleSheet">
+    <link href="../estiloscss/estilootrosproductos.css"rel="StyleSheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     </head>
@@ -19,11 +19,11 @@
                     <img src="../iconos/logomt.PNG" alt="facebook">
                 </div>
                 <div class="enlaces" id="enlaces">
-                    <a href="#" id="enlace-inicio" class="btn-header">Inicio</a>
-                    <a href="#" id="enlace-trabajo" class="btn-header">Trabajo</a>
-                    <a href="#" id="enlace-servicio" class="btn-header">Servicio</a>
-                    <a href="#" id="enlace-Promocion" class="btn-header">Promocion</a>
-                    <a href="#" id="enlace-contacto" class="btn-header">Contacto</a>
+                    <a href="../index.html" id="enlace-inicio" class="btn-header">Inicio</a>
+                    <a href="../index.html" id="enlace-trabajo" class="btn-header">Trabajo</a>
+                    <a href="../index.html" id="enlace-servicio" class="btn-header">Servicio</a>
+                    <a href="../index.html" id="enlace-Promocion" class="btn-header">Promocion</a>
+                    <a href="../index.html" id="enlace-contacto" class="btn-header">Contacto</a>
                 </div>
                 <div class="icono" id="open">
                     <span>&#9776;</span>
@@ -73,7 +73,7 @@ while($chaqueta1=mysqli_fetch_assoc($insertar)){
 <footer id="contacto">
     <div class="footer contenedor">
         <div class="marca-logo">
-            <img src="iconos/logomt.PNG" alt="">
+            <img src="../iconos/logomt.PNG" alt="">
         </div>
         <div class="iconos">
             <img src="../iconos/instagram.png" alt="facebook" width="3%" height="3%">

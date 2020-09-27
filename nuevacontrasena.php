@@ -55,8 +55,6 @@
 </div>
 
 
-
-
 <footer>
     <a href="https://www.facebook.com"> <img src="imagenes/facebook.png" alt="facebook" width="10" height="10"></a> 
     <a href="https://twitter.com"> <img src="imagenes/twiter.jpg" alt="twiter" width="10" height="10"></a> 
