@@ -32,7 +32,7 @@
     </header>
 
     <div class="rescon">
-        <form action="http://localhost/proyecto-mistrapitos/3.DESARROLLO/HTML2/CRUD-SERVICIOS/api.php?apicall=mostrarcontrasena" method="POST"> 
+        <form action="http://localhost/TiendaVirtual/crudservicios/api.php?apicall=mostrarcontrasena" method="POST"> 
             <h1>  Reestablecer Contraseña </h1>
             <p> Correo Electronico: </p> <input type="email" name="Correo"/>
             <p> Numero de Identificacion: </p> <input type="text" name="ID_Usuario"/><br><br>

@@ -177,7 +177,8 @@ where ID_Tipo_Documento= :ID_Tipo_Documento and ID_Usuario = :ID_Usuario");
             $user["ID_Usuario"] = utf8_encode($ID_Usuario);
             $user["Contrasena"] = utf8_encode($Contrasena);
           
-         if($user["Correo"] != null and $user['ID_Usuario'] != null) {
+         if($user["Correo"] != null and $user["ID_Usuario"] != null) {
+
          return "La contrasena del Correo del $user[Correo] es $user[Contrasena]<br>
          <a href='../index.html'> Volver ";}
            else {
