@@ -369,8 +369,32 @@ $stmt->bindParam(":ID_Producto", $ID_Producto,PDO::PARAM_STR);
 
 
  public function updateProductoModel($datosModel,$tabla){
-
+if($datosModel["IMG"] != ""){
 $IMG = "../Fotos/".$datosModel["IMG"];
+}
+
+else {
+
+ $PRO= new Datos();
+
+ $editar= $PRO->mostrarProductos();
+
+ if($editar){
+
+foreach($editar as $roweditar => $itemeditar){
+
+$itemeditar["Imagen_Producto"];
+
+
+}
+
+    
+
+
+ }
+ $IMG= $itemeditar;
+}
+
 
 $stmt = Database::getconectar()->prepare("UPDATE $tabla set ID_Producto=:ID_Producto,
 Nombre_Producto=:Nombre_Producto,

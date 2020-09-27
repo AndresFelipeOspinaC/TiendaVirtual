@@ -367,20 +367,23 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
       
       default: "";
       break;
+      
+      
+      
       }
  
       $db = new Controllerjson();
       $result = $db->createProductoController($ID_Producto,$Nombre_Producto,$destino,$Imagen_Producto,$Talla,$Color,$Material,$precio,$Descripcion,$ID_categoria,$ID_clasificacion);
-      header("Location:../administrador/administaproducto.php"); 
+
     break;
 
 
     case 'updateproducto':
-    ParametrosDisponibles(array('ID_Producto', 'Nombre_Producto','Talla', 'Color', 'Material', 'precio', 'Descripcion', 'ID_categoria', 'ID_clasificacion'));
+    ParametrosDisponibles(array('ID_Producto', 'Nombre_Producto','Talla', 'Color', 'Material', 'precio2', 'Descripcion', 'ID_categoria', 'ID_clasificacion'));
 
     if($_POST["ID_Producto"]=="" ||  $_POST["Nombre_Producto"]=="" ||  $_POST["Talla"]=="" || $_POST["Color"]=="" ||  
 
-    $_POST["Material"]=="" || $_POST["precio"]="" || $_POST["ID_categoria"]=="" ||    $_POST["ID_clasificacion"]==""  )
+    $_POST["Material"]=="" || $_POST["precio2"]="" || $_POST["ID_categoria"]=="" ||    $_POST["ID_clasificacion"]==""  )
     
     {
     
@@ -429,7 +432,7 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
 
         
 
-      $destino =  $itemimagen.$Imagen_Producto;
+      $destino =  $itemimagen["Imagen_Producto"].$Imagen_Producto;
       
       
         }}
@@ -444,7 +447,7 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
       
       $Material = $_POST["Material"];
       
-      $precio = $_POST["precio"];
+      $precio = $_POST["precio2"];
       
        $ID_categoria = $_POST["ID_categoria"];
       

@@ -180,7 +180,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <td> <input type="text" name="Talla"   value="<?php echo $item['Talla']; ?>" /></td>
             <td> <input type="text" name="Color"   value="<?php echo $item['Color']; ?>" /></td>
             <td><input type="text" name="Material"   value="<?php echo $item['Material']; ?>"/></td>
-            <td><input type="text" name="precio"   value="<?php echo $item['precio']; ?>"/></td>
+            <td><input type="text" name="precio2"   value="<?php echo $item['precio']; ?>"/></td>
             <td>  <select name="ID_categoria">
             <option> <?php echo $item['Nombre_Categoria']?> </option>
             <?php
