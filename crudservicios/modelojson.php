@@ -275,7 +275,6 @@ $stmt->bindParam(":ID_Producto", $datosModel["ID_Producto"],PDO::PARAM_STR);
         } 
 
 
-
  }
 
  public function editarproducto($ID_Producto,$tabla){
