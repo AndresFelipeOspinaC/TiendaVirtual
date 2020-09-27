@@ -264,6 +264,20 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
     break;
 
 
+    case 'mostrarcontrasena':
+        ParametrosDisponibles(array('Correo','ID_Usuario'));
+        $db = new Controllerjson();
+      $result = $db->mostrarcontrasenaController($_POST['Correo'],$_POST['ID_Usuario']);
+      
+      $respuesta = $result;
+    break;
+    
+
+
+
+
+
+
     case 'deleteusuario':
         ParametrosDisponibles(array('ID_Usuario'));
         $db = new Controllerjson();
