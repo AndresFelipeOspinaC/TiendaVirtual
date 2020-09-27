@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+    <head>
+    <title>Tienda MT</title>
+    <! --logo en pestaña--¡>
+    <link rel="icon" href="iconos/logomt.PNG"width="100%" height="100%"/>
+    <meta charset="utf-8">
+    <link href="estilosindex.css"rel="StyleSheet">
+    <link href="estilocontacto.css"rel="StyleSheet">
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    </head>
+<body class="hidden">
+
+    <header>
+        <nav id="nav" class="nav1">
+            <div class="contenedor-nav">
+                <div class="logo">
+                    <img src="iconos/logomt.PNG" alt="facebook">
+                </div>
+                <div class="enlaces" id="enlaces">
+                    <a href="#" id="enlace-inicio" class="btn-header">Inicio</a>
+                    <a href="#" id="enlace-trabajo" class="btn-header">Trabajo</a>
+                    <a href="#" id="enlace-servicio" class="btn-header">Servicio</a>
+                    <a href="#" id="enlace-sesion" class="btn-header">Inicio Sesión</a>
+                    <a href="#" id="enlace-contacto" class="btn-header">Contacto</a>
+                </div>
+                <div class="icono" id="open">
+                    <span>&#9776;</span>
+                </div>
+            </div>
+        </nav>
+        <div class="textos">
+            <h1>Mis Trapitos</h1>
+            <h2>Tienda de Ropa Online</h2>
+        </div>
+    </header>
+    <section class="pqrs">
+            <div class="formcontactanos">
+            <form method="POST" action="contactanos.php">
+            <h2>Contactanos</h2>
+            <div class="form-group">
+            <label for="exampleFormControlInput1">Nombre</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="nombre">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Correo</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"name="correo">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Telefono</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="telefono">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Asunto</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1"name="asunto">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Ingrese su Solicitud o Cotizacion</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1"name="Descripcion" rows="3"></textarea>
+        </div>
+        <div class="botonenviar">
+        <input type="submit" id="enviar" name="Enviar"></div>
+        </form>
+        </div>
+    </section>
+
+
+
+
+<footer>
+  <! --Seccion de contacto (footer)-->
+  <footer id="contacto">
+      <div class="footer contenedor">
+          <div class="marca-logo">
+              <img src="iconos/logomt.PNG" alt="">
+          </div>
+          <div class="iconos">
+              <img src="iconos/instagram.png" alt="facebook" width="3%" height="3%">
+              <img src="iconos/whatsapp.png" alt="facebook" width="3%" height="3%">
+              <img src="iconos/facebook (1).png" alt="facebook" width="3%" height="3%"> 
+              <img src="iconos/youtube.png" alt="facebook" width="3%" height="3%">
+              <img src="iconos/github.png" alt="facebook" width="3%" height="3%">
+  
+          </div>
+          <p>La pacion e innovacion es lo que nos distingue del resto</p>
+      </div>
+  </footer>
+  <script src="js/jquery.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/filtro.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+  </html>
