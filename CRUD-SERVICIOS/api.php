@@ -264,11 +264,6 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
     break;
 
 
-
-
-
-
-
     case 'deleteusuario':
         ParametrosDisponibles(array('ID_Usuario'));
         $db = new Controllerjson();

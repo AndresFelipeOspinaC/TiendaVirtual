@@ -6,7 +6,7 @@
     --fondo: #f2f2f2;
     --titulos: 33px;
     --margenes: 60px;
-    --espacios: 50px;
+    --espacios: 30px;
     --espacios-contenido:45px;
 }
 
@@ -31,12 +31,10 @@ header{
     rgba(206, 201, 203, 0.6),
     rgba(29,100,171, .6),
     rgb(250, 162, 67)
-    ), url(img/fondo.jpg);
+    ), url(../img/fondo.jpg);
     background-attachment:fixed;
     background-position: center;
     background-size: cover;
-    margin-bottom: var(--espacios);
-
 }
 nav{
     width: 100%;
@@ -108,85 +106,65 @@ nav .enlaces a:hover{
     color: var(--color4);
 }
 
-.contenedor2{
-    margin: auto;
-    width: 90%;
-    max-width: 1000px;
-    text-align: center;
-    overflow: hidden;
-}
-.contenedor2 h3{
-    font-size: var(--titulos);
-    color: var(--color4);
-}
 
-/*GALERIA MIS TRAPITOS inicio*/
 
-.galeria{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px,1fr));
-    width: 85%;
-    margin: auto;
-    grid-gap: 10px;
-    padding: 40px 0;
-    overflow: hidden;
-    margin-bottom: var(--espacios-contenido);
-
-}
-.galeria>a{
-    display: block;
+  /*conexion a php con la pagina usuario actualizar.php*/
+  .usuarioactualiza{ 
     position: relative;
-    overflow: hidden;
-    box-shadow: 0 0 6px rgba(0, 0, 0, .5);
+    right:-350px;
+      width:50%;
+      height:650px;
+     font-size:20px;
+     background: linear-gradient(to bottom,
+     rgba(206, 201, 203, 0.6),
+     rgba(29,100,171, .3),
+     rgba(250, 161, 67, 0.685)
+     );
+    text-align: center;
+    padding: 10px;
+    margin-bottom: var(--espacios-contenido);
+  }
+
+
+  .after::after{
+    content: '';
+    display: block;
+    margin: auto;
+    margin-top: var(--espacios);
+    width: 100px;
+    height: 2px;
+    background: var(--color4);
+    margin-bottom: var(--espacios-contenido);
+}.info{
+    color: var(--color4);
+    text-align: center;
 }
 
-.galeria img{
-    width: 100%;
-    vertical-align: top;
-    height: 200px;
-    object-fit: cover;
-    transition: trasform 0.5s;
-}
-.galeria a:hover img{
-    filter: blur(2px);
-    transform: rotate(20deg) scale(1.3 );
-}
-.light-box{
-    position: fixed;
-    top:0;
-    left:0;
-    background: rgba(0, 0, 0, .5);
-    transition: trasform .6s ease-in-out;
-    width: 100%;
-    height: 100vh;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: scale(0);
-}
-.light-box img{
-    width: 50vw;
-    max-height: 70vh;
-}
-.light-box:target{
-    transform: scale(1);
-}
-.close{
-    display:block;
-    position: absolute;
-    top:40px;
-    right: 40px;
-    background: crimson;
-    color: #ffff;
-    text-decoration: none;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    line-height: 40px;
-    border-radius: 50%;
-}
-/*GALERIA MIS TRAPITOS fin*/
+
+
+   /*conexion a php con la pagina usuario actualizar.php*/
+  .usuarioactualiza small {
+    color: var(--color4);
+
+    display: block;
+    margin:15px;
+  }
+
+  .usuarioactualiza a{
+    background: rgb(134, 7, 7);
+    color:var(--color4);
+   margin:15px;
+    width:70%;
+    height:50%;
+    
+  }
+
+  .usuarioactualiza a:hover{
+    color:#f2f2f2;
+    background: var(--color4);   
+    border: solid var(--color4);
+  }
+
 
 
 
@@ -212,54 +190,15 @@ nav .enlaces a:hover{
 }
 
 
-.after::after{
-    content: '';
-    display: block;
-    margin: auto;
-    margin-top: var(--espacios);
-    width: 100px;
-    height: 2px;
-    background: var(--color4);
-    margin-bottom: var(--espacios-contenido);
-}
-  
 
-
-.about{
-    background: linear-gradient(to bottom,
-    rgba(2, 22, 43, 0.11),
-    rgba(6, 12, 17, 0.938)
-    ), url(img/fondo4.jpg);
-    height: auto;
-}
-
-
-.servicios{
-    display: flex;
-    color: #fff;
-    justify-content: space-between;
-    margin: auto;
-    flex-wrap: wrap;
-}
-.caja-servicios{
-    width: 30%;
-    margin: auto;
-    text-align: center;
-}
-.caja-servicios h4{
-    margin-bottom: var(--espacios);
-}    
-.caja-servicios>p{
-    text-align: center;
-}
-
+ 
 
 
 footer{
     background: linear-gradient(to bottom,
     rgba(16, 50, 90, 0.6),
     rgba(2,0,1, .6)
-    ), url(img/fondo6.jpg);
+    ), url(../img/fondo6.jpg);
 }
 .marca-logo{
     width: 100%;
@@ -317,7 +256,6 @@ footer P{
         background: linear-gradient(to bottom,
         rgba(29,100,171, .6)
         );
- 
     }
     .textos>h1{
         font-size: 70px;}
