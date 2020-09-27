@@ -372,7 +372,7 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
       }
  
       $db = new Controllerjson();
-      $result = $db->createProductoController($ID_Producto,$Nombre_Producto,$destino,$Talla,$Color,$Material,$precio,$Descripcion,$ID_categoria,$ID_clasificacion);
+      $result = $db->createProductoController($ID_Producto,$Nombre_Producto,$destino,$Imagen_Producto,$Talla,$Color,$Material,$precio,$Descripcion,$ID_categoria,$ID_clasificacion);
 
     break;
 

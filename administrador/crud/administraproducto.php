@@ -158,7 +158,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <tbody>
           <?php
          
-         require_once("../../CRUD-SERVICIOS/modelojson.php");
+         require_once("../../crudservicios/modelojson.php");
 
          $mostrarP = new Datos();
 
@@ -200,7 +200,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!--   -->
     </div>
 <div class="containerform">
-<form action="http://localhost/tiendaVirtual/CRUD-SERVICIOS/api.php?apicall=createproducto" method="POST" enctype="multipart/form-data">
+<form action="http://localhost/tiendaVirtual/crudservicios/api.php?apicall=createproducto" method="POST" enctype="multipart/form-data">
 
 Código del Producto <input type="text" name="ID_Producto" placeholder="Escriba el Código del Producto" />
 

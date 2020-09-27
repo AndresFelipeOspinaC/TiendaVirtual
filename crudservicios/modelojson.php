@@ -150,12 +150,12 @@ where ID_Tipo_Documento= :ID_Tipo_Documento and ID_Usuario = :ID_Usuario");
     }
 
 
-    public function mostrarcontrasenaModel($Correo,$ID_Usuario,$tabla){
+    public function mostrarcontrasenaModel($Correo,$Contrasena,$tabla){
      
-        $stmt = Database::getconectar()->prepare("SELECT Correo,ID_Usuario,Contrasena FROM $tabla where Correo=:Correo and ID_Usuario=:ID_Usuario");
+        $stmt = Database::getconectar()->prepare("SELECT Correo,ID_Usuario,Contrasena FROM $tabla where Correo=:Correo and Contrasena=:Contrasena");
         
         $stmt->bindParam(":Correo",$Correo);
-        $stmt->bindParam(":ID_Usuario",$ID_Usuario);
+        $stmt->bindParam(":Contrasena",$Contrasena);
        
         $stmt->execute();
 
@@ -250,6 +250,8 @@ $stmt->bindParam(":ID_Producto", $ID_Producto,PDO::PARAM_STR);
 
  public function createProductoModel($datosModel,$tabla){
 
+$IMG = "../Fotos/".$datosModel["IMG"];
+
 $stmt = Database::getconectar()->prepare("INSERT into $tabla(ID_Producto,Nombre_Producto,
 Imagen_Producto,Talla,Color,Material,precio,Descripcion,ID_categoria,ID_clasificacion) 
 values (:ID_Producto,:Nombre_Producto,:Imagen_Producto,:Talla,:Color,:Material,:precio,:Descripcion,
@@ -257,7 +259,7 @@ values (:ID_Producto,:Nombre_Producto,:Imagen_Producto,:Talla,:Color,:Material,:
 
 $stmt->bindParam(":ID_Producto", $datosModel["ID_Producto"],PDO::PARAM_STR);
         $stmt->bindParam(":Nombre_Producto", $datosModel["Nombre_Producto"],PDO::PARAM_STR);
-        $stmt->bindParam(":Imagen_Producto", $datosModel["Imagen_Producto"],PDO::PARAM_STR);
+        $stmt->bindParam(":Imagen_Producto", $IMG,PDO::PARAM_STR);
         $stmt->bindParam(":Talla", $datosModel["Talla"],PDO::PARAM_STR);
         $stmt->bindParam(":Color", $datosModel["Color"],PDO::PARAM_STR);
         $stmt->bindParam(":Material", $datosModel["Material"],PDO::PARAM_STR);
