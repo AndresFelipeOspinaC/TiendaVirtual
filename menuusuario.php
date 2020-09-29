@@ -3,7 +3,7 @@ session_start();
 if(isset($_SESSION["usuario"])){
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="en"> 
     <head>
     <title>Tienda MT</title>
     <meta charset="utf-8">
@@ -66,7 +66,7 @@ if(isset($_SESSION["usuario"])){
         <section class="galeria">
 
                 <a href="#imagen1">
-                    <img src="Producto/categoria1/producto1.1.jpeg "alt="">
+                    <img src="OtrosProductos/otro-producto2.jpg "alt="">
                 </a>
                 <a href="#imagen2">
                     <img src="Producto/categoria2/producto7.jpeg" alt="">
@@ -78,15 +78,15 @@ if(isset($_SESSION["usuario"])){
                     <img src="Producto/categoria1/producto1.1.jpeg "alt="">
                 </a>
                 <a href="#imagen5">
-                    <img src="Producto/categoria2/producto7.jpeg" alt="">
+                    <img src="Producto/categoria3/producto8.3.jpeg" alt="">
                 </a>
                 <a href="#imagen6">
-                    <img src="Producto/categoria4/producto14.jpeg" alt="">
+                    <img src="OtrosProductos/otro-producto4.jpg" alt="">
                 </a>
         </section>  
                 
                 <article class="light-box" id="imagen1">
-                    <img src="Producto/categoria1/producto1.1.jpeg "alt="">
+                    <img src="OtrosProductos/otro-producto2.jpg"alt="">
                     <a href="" class="close">X</a>
                 </article>
                 <article class="light-box" id="imagen2">
@@ -102,11 +102,11 @@ if(isset($_SESSION["usuario"])){
                     <a href="" class="close">X</a>
                 </article>
                 <article class="light-box" id="imagen5">
-                    <img src="Producto/categoria2/producto7.jpeg"alt="">
+                    <img src="Producto/categoria3/producto8.3.jpeg"alt="">
                     <a href="" class="close">X</a>
                 </article>
                 <article class="light-box" id="imagen6">
-                    <img src="Producto/categoria4/producto14.jpeg"alt="">
+                    <img src="OtrosProductos/otro-producto4.jpg"alt="">
                     <a href="" class="close">X</a>
                 </article>
                 
