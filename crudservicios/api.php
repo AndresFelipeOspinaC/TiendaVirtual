@@ -295,7 +295,7 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
 
 
    case 'createproducto':
-    ParametrosDisponibles(array('ID_Producto', 'Nombre_Producto','Talla', 'Color', 'Material', 'precio', 'Descripcion', 'ID_categoria', 'ID_clasificacion'));
+    ParametrosDisponibles(array('ID_Producto', 'Nombre_Producto','Talla', 'Color', 'Material', 'Precio', 'Descripcion', 'ID_categoria', 'ID_clasificacion'));
 
     $ID_Producto =  $_POST["ID_Producto"];
     $Nombre_Producto =  $_POST["Nombre_Producto"];
@@ -317,7 +317,7 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
     $Talla=$_POST["Talla"];
     $Color= $_POST["Color"];
     $Material=$_POST["Material"];
-    $precio=$_POST["precio"];
+    $precio=$_POST["Precio"];
     $Descripcion=$_POST["Descripcion"];
     $ID_categoria= $_POST["ID_categoria"];
     
@@ -374,16 +374,19 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
  
       $db = new Controllerjson();
       $result = $db->createProductoController($ID_Producto,$Nombre_Producto,$destino,$Imagen_Producto,$Talla,$Color,$Material,$precio,$Descripcion,$ID_categoria,$ID_clasificacion);
+    
+      
+
 
     break;
 
 
     case 'updateproducto':
-    ParametrosDisponibles(array('ID_Producto', 'Nombre_Producto','Talla', 'Color', 'Material', 'precio2', 'Descripcion', 'ID_categoria', 'ID_clasificacion'));
+    ParametrosDisponibles(array('ID_Producto', 'Nombre_Producto','Talla', 'Color', 'Material', 'Precio', 'Descripcion', 'ID_categoria', 'ID_clasificacion'));
 
     if($_POST["ID_Producto"]=="" ||  $_POST["Nombre_Producto"]=="" ||  $_POST["Talla"]=="" || $_POST["Color"]=="" ||  
 
-    $_POST["Material"]=="" || $_POST["precio2"]="" || $_POST["ID_categoria"]=="" ||    $_POST["ID_clasificacion"]==""  )
+    $_POST["Material"]=="" || $_POST["Precio"]="" || $_POST["ID_categoria"]=="" ||    $_POST["ID_clasificacion"]==""  )
     
     {
     
@@ -416,38 +419,24 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
       $Imagen_Producto = $_FILES["Imagen_Producto"] ["name"];
       
       if(isset($Imagen_Producto) &&  $Imagen_Producto = $_FILES["Imagen_Producto"] ["name"] != ""){
+        $Imagen_Producto = $_FILES["Imagen_Producto"] ["name"];
       $ruta= $_FILES["Imagen_Producto"] ["tmp_name"];
       $destino="../administrador/Fotos/".$Imagen_Producto;
       copy($ruta,$destino);
       }
+
       else {
-      
-      $VolverImagen = new Datos();
-      $MostrarImagen= $VolverImagen->volverImagen($ID_Producto,"producto");
 
-      if($MostrarImagen){
-        foreach($MostrarImagen as $rowimagen => $itemimagen){
-        
-        $itemimagen["Imagen_Producto"];
-
-        
-
-      $destino =  $itemimagen["Imagen_Producto"].$Imagen_Producto;
-      
-      
-        }}
-      
+        $destino = $Imagen_Producto;
       }
-      
-      
-      
-      
+
+
       $Talla = $_POST["Talla"];
       $Color = $_POST["Color"];
       
       $Material = $_POST["Material"];
       
-      $precio = $_POST["precio2"];
+      $precio = $_POST["Precio"];
       
        $ID_categoria = $_POST["ID_categoria"];
       
@@ -506,6 +495,24 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
     
     $db =new Controllerjson();
  $result = $db->updateProductoController($ID_Producto,$Nombre_Producto,$destino,$Imagen_Producto,$Talla,$Color,$Material,$precio,$Descripcion,$ID_categoria,$ID_clasificacion);
+
+break;
+
+case 'deleteproducto':
+    ParametrosDisponibles(array('ID_Producto'));
+    $db = new Controllerjson();
+    $result = $db->deleteProductoController($_POST["ID_Producto"]);
+    
+    if(!$result){
+        $respuesta['error'] = false;
+        $respuesta['mensaje'] = 'Usuario No Existe';
+    }else{
+        $respuesta['error'] = true;
+        $respuesta['mensaje'] = 'Usuario Eliminado';
+    }
+break;
+
+
 
 
     }

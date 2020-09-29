@@ -250,7 +250,7 @@ $stmt->bindParam(":ID_Producto", $ID_Producto,PDO::PARAM_STR);
 
  public function createProductoModel($datosModel,$tabla){
 
-$IMG = "../Fotos/".$datosModel["IMG"];
+$IMG="../Fotos/".$datosModel["IMG"];
 
 $stmt = Database::getconectar()->prepare("INSERT into $tabla(ID_Producto,Nombre_Producto,
 Imagen_Producto,Talla,Color,Material,precio,Descripcion,ID_categoria,ID_clasificacion) 
@@ -353,7 +353,7 @@ $stmt->execute();
 
 $stmt->bindParam(":ID_Producto", $ID_Producto,PDO::PARAM_STR);
         $stmt->bindParam(":Nombre_Producto", $Nombre_Producto,PDO::PARAM_STR);
-        $stmt->bindParam(":Imagen_Producto", $IMG,PDO::PARAM_LOB);
+        $stmt->bindParam(":Imagen_Producto", $IMG,PDO::PARAM_STR);
         $stmt->bindParam(":Talla", $Talla,PDO::PARAM_STR);
         $stmt->bindParam(":Color", $Color,PDO::PARAM_STR);
         $stmt->bindParam(":Material", $Material,PDO::PARAM_STR);
@@ -369,32 +369,33 @@ $stmt->bindParam(":ID_Producto", $ID_Producto,PDO::PARAM_STR);
 
 
  public function updateProductoModel($datosModel,$tabla){
-if($datosModel["IMG"] != ""){
-$IMG = "../Fotos/".$datosModel["IMG"];
-}
 
-else {
+if($datosModel["Imagen_Producto"] == "../administrador/Fotos/".$datosModel["IMG"])
 
- $PRO= new Datos();
-
- $editar= $PRO->mostrarProductos();
-
- if($editar){
-
-foreach($editar as $roweditar => $itemeditar){
-
-$itemeditar["Imagen_Producto"];
+ {
 
 
-}
-
-    
+    $IMG="../Fotos/".$datosModel["IMG"];
 
 
  }
- $IMG= $itemeditar;
-}
 
+
+ else {
+
+    $VolverImagen = new Datos();
+    $MostrarImagen= $VolverImagen->volverImagen($datosModel["ID_Producto"],"producto");
+
+    if($MostrarImagen){
+      foreach($MostrarImagen as $rowimagen => $itemimagen){
+      
+     $IMG = $itemimagen["Imagen_Producto"];
+
+      }}
+
+  
+      
+ }
 
 $stmt = Database::getconectar()->prepare("UPDATE $tabla set ID_Producto=:ID_Producto,
 Nombre_Producto=:Nombre_Producto,
@@ -423,8 +424,18 @@ $stmt->bindParam(":ID_Producto", $datosModel["ID_Producto"],PDO::PARAM_STR);
 
 
  }
+   
+ public function deleteProductoModel($ID_Producto, $tabla){
 
+    $stmt = Database::getconectar()->prepare("DELETE  FROM $tabla WHERE ID_Producto=:ID_Producto");
 
-
+    $stmt->bindParam(":ID_Producto",$ID_Producto, PDO::PARAM_STR);
+    $stmt->execute();
 }
+
+
+ }
+     
+
+
 ?>

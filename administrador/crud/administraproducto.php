@@ -185,7 +185,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <a href="editproducto.php?id=<?php echo $item['ID_Producto'] ?>" class="btn btn-secondary">
                 <i class="fas fa-marker"></i>
               </a>
-              <a href="deleteproducto.php?id=<?php echo $item['ID_Producto']  ?>" class="btn btn-danger">
+
+              <form action="http://localhost/TiendaVirtual/crudservicios/api.php?apicall=deleteproducto" method="post">
+              
+
+                <input type="hidden" name="ID_Producto" value="<?php echo $item["ID_Producto"] ?>">
+                <input type="submit" value="Eliminar" ?>
+              
+              </form>
+              
+              <a href="http://localhost/TiendaVirtual/crudservicios/api.php?apicall=deleteproducto?ID_Producto=<?php echo $item["ID_Producto"]?>" class="btn btn-danger">
+
+
+              
+          
                 <i class="far fa-trash-alt"></i>
               </a>
             </td>
@@ -210,7 +223,7 @@ Imagen del Producto: <input type="file" name="Imagen_Producto" >
 Talla: <input type="text" name="Talla" id="Talla">
 Color: <input type="text" name="Color" id="Color">
 Material: <input type="text" name="Material" id="Materia">
-precio: <input type="text" name="precio" id="precio">
+precio: <input type="number" name="Precio" id="precio">
 Descripcion: <input type="text" name="Descripcion" id="Descripcion">
 Categoria: <select name="ID_categoria" id="ID_categoria"> 
         <option>Chaquetas</option>
