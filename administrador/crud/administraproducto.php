@@ -160,7 +160,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <th>Talla</th>
             <th>Color</th>
             <th>Material</th>
-            <th>Precio</th>
+            <th>Valor</th>
             <th>Categoria</th>
             <th>Clasificacion</th>
             <th>Descripción</th>
@@ -188,7 +188,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <td><?php echo $item['Talla']; ?></td>
             <td><?php echo $item['Color']; ?></td>
             <td><?php echo $item['Material']; ?></td>
-            <td><?php echo $item['precio']; ?></td>
+            <td><?php echo $item['Valor']; ?></td>
             <td><?php echo $item['Nombre_Categoria']; ?></td>
             <td><?php echo $item['Nombre_Clasificacion']; ?></td>
             <td><?php echo $item['Descripcion']; ?></td>
@@ -224,41 +224,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </table>
     <!--   -->
     </div>
-<<<<<<< HEAD
-<div class="containerform">
-<form action="http://localhost/tiendaVirtual/crudservicios/api.php?apicall=createproducto" method="POST" enctype="multipart/form-data">
 
-Código del Producto <input type="text" name="ID_Producto" placeholder="Escriba el Código del Producto" />
-
-Nombre del Producto: <input type="text" name="Nombre_Producto" id="Nombre_Producto">
-
-Imagen del Producto: <input type="file" name="Imagen_Producto" >
-Talla: <input type="text" name="Talla" id="Talla">
-Color: <input type="text" name="Color" id="Color">
-Material: <input type="text" name="Material" id="Materia">
-precio: <input type="number" name="Precio" id="precio">
-Descripcion: <input type="text" name="Descripcion" id="Descripcion">
-Categoria: <select name="ID_categoria" id="ID_categoria"> 
-        <option>Chaquetas</option>
-        <option>Pantalones</option>
-        <option>Formal</option>
-        <option>Informal</option>
-        <option >Blusa</option>
-         </select></br>
-Clasificacion: <select name="ID_clasificacion" id="ID_clasificacion"> 
-        <option>Unisex</option>
-        <option>Mujeres</option>
-        <option>Niños</option>
-        <option>Bebes</option>
-        <option>Niñas</option>
-        <option>Hombres</option>
-         </select></br>
-         <input type="submit" value="Guardar">
-         
-</form>
-</div>
-</div>
-=======
 <section class="crearproductos" id="crear">
   <form action="http://localhost/tiendaVirtual/crudservicios/api.php?apicall=createproducto" method="POST" enctype="multipart/form-data">
 
@@ -293,9 +259,9 @@ Clasificacion: <select name="ID_clasificacion" id="ID_clasificacion">
         <input type="text" name="Material" id="Materia">
         </div>
 
-      <div class="proingresa2"> precio: </div>
+      <div class="proingresa2"> Valor: </div>
         <div class="resp2">
-        <input type="text" name="precio" id="precio">
+        <input type="text" name="Valor" id="Valor">
         </div>
 
       <div class="proingresa2"> Descripcion: </div>
@@ -331,7 +297,7 @@ Clasificacion: <select name="ID_clasificacion" id="ID_clasificacion">
     
   </section>
 
->>>>>>> f5252043fdcd84b832f58a62f01ac3d05120e48c
+
 </main>
     <!-- Content Header (Page header) -->
     <div class="content-header">

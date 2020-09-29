@@ -295,7 +295,7 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
 
 
    case 'createproducto':
-    ParametrosDisponibles(array('ID_Producto', 'Nombre_Producto','Talla', 'Color', 'Material', 'Precio', 'Descripcion', 'ID_categoria', 'ID_clasificacion'));
+    ParametrosDisponibles(array('ID_Producto', 'Nombre_Producto','Talla', 'Color', 'Material', 'Valor', 'Descripcion', 'ID_categoria', 'ID_clasificacion'));
 
     $ID_Producto =  $_POST["ID_Producto"];
     $Nombre_Producto =  $_POST["Nombre_Producto"];
@@ -317,7 +317,7 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
     $Talla=$_POST["Talla"];
     $Color= $_POST["Color"];
     $Material=$_POST["Material"];
-    $precio=$_POST["Precio"];
+    $Valor=$_POST["Valor"];
     $Descripcion=$_POST["Descripcion"];
     $ID_categoria= $_POST["ID_categoria"];
     
@@ -373,8 +373,18 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
       }
  
       $db = new Controllerjson();
-      $result = $db->createProductoController($ID_Producto,$Nombre_Producto,$destino,$Imagen_Producto,$Talla,$Color,$Material,$precio,$Descripcion,$ID_categoria,$ID_clasificacion);
+      $result = $db->createProductoController($ID_Producto,$Nombre_Producto,$destino,$Imagen_Producto,$Talla,$Color,$Material,$Valor,$Descripcion,$ID_categoria,$ID_clasificacion);
     
+      
+    if(!$result){
+        $respuesta['error'] = false;
+        $respuesta['mensaje'] = 'Producto No Existe';
+        header("location:../administrador/crud/administraproducto.php");
+    }else{
+        $respuesta['error'] = true;
+        $respuesta['mensaje'] = 'Producto Eliminado';
+        header("location:../administrador/crud/administraproducto.php");
+    }
       
 
 
@@ -382,11 +392,11 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
 
 
     case 'updateproducto':
-    ParametrosDisponibles(array('ID_Producto', 'Nombre_Producto','Talla', 'Color', 'Material', 'Precio', 'Descripcion', 'ID_categoria', 'ID_clasificacion'));
+    ParametrosDisponibles(array('ID_Producto', 'Nombre_Producto','Talla', 'Color', 'Material', 'Valor', 'Descripcion', 'ID_categoria', 'ID_clasificacion'));
 
     if($_POST["ID_Producto"]=="" ||  $_POST["Nombre_Producto"]=="" ||  $_POST["Talla"]=="" || $_POST["Color"]=="" ||  
 
-    $_POST["Material"]=="" || $_POST["Precio"]="" || $_POST["ID_categoria"]=="" ||    $_POST["ID_clasificacion"]==""  )
+    $_POST["Material"]=="" || $_POST["Valor"]="" || $_POST["ID_categoria"]=="" ||    $_POST["ID_clasificacion"]==""  )
     
     {
     
@@ -436,7 +446,7 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
       
       $Material = $_POST["Material"];
       
-      $precio = $_POST["Precio"];
+      $Valor = $_POST["Valor"];
       
        $ID_categoria = $_POST["ID_categoria"];
       
@@ -480,7 +490,7 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
       case "Niñas":  $ID_clasificacion = "CLAS05";
       break;
       
-      case "Hombres": $ $ID_clasificacion = "CLAS06";
+      case "Hombres":  $ID_clasificacion = "CLAS06";
       break;
       
       default: "";
@@ -494,7 +504,20 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
     }      
     
     $db =new Controllerjson();
- $result = $db->updateProductoController($ID_Producto,$Nombre_Producto,$destino,$Imagen_Producto,$Talla,$Color,$Material,$precio,$Descripcion,$ID_categoria,$ID_clasificacion);
+ $result = $db->updateProductoController($ID_Producto,$Nombre_Producto,$destino,$Imagen_Producto,$Talla,$Color,$Material,$Valor,$Descripcion,$ID_categoria,$ID_clasificacion);
+
+
+ if(!$result){
+    $respuesta['error'] = false;
+    $respuesta['mensaje'] = 'Producto No Existe';
+    header("location:../administrador/crud/administraproducto.php");
+}else{
+    $respuesta['error'] = true;
+    $respuesta['mensaje'] = 'Producto Eliminado';
+    header("location:../administrador/crud/administraproducto.php");
+}
+
+
 
 break;
 
@@ -503,12 +526,17 @@ case 'deleteproducto':
     $db = new Controllerjson();
     $result = $db->deleteProductoController($_POST["ID_Producto"]);
     
+
+    
+
     if(!$result){
         $respuesta['error'] = false;
-        $respuesta['mensaje'] = 'Usuario No Existe';
+        $respuesta['mensaje'] = 'Producto No Existe';
+        header("location:../administrador/crud/administraproducto.php");
     }else{
         $respuesta['error'] = true;
-        $respuesta['mensaje'] = 'Usuario Eliminado';
+        $respuesta['mensaje'] = 'Producto Eliminado';
+        header("location:../administrador/crud/administraproducto.php");
     }
 break;
 

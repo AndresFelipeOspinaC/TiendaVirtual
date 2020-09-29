@@ -223,7 +223,7 @@ return $stmt->fetchAll();
  public function mostrarProductos(){
  
     $stmt = Database::getconectar()->prepare("SELECT ID_Producto, Nombre_Producto, Imagen_Producto,
-     Talla, Color, Material, precio, Nombre_Categoria, Nombre_Clasificacion,Descripcion 
+     Talla, Color, Material, Valor, Nombre_Categoria, Nombre_Clasificacion,Descripcion 
     FROM producto
     join categoria on producto.ID_categoria = categoria.ID_Categoria
     join clasificacion on producto.ID_clasificacion = clasificacion.ID_Clasificacion");
@@ -236,7 +236,7 @@ $stmt->bindParam(":ID_Producto", $ID_Producto,PDO::PARAM_STR);
         $stmt->bindParam(":Talla", $Talla,PDO::PARAM_STR);
         $stmt->bindParam(":Color", $Color,PDO::PARAM_STR);
         $stmt->bindParam(":Material", $Material,PDO::PARAM_STR);
-        $stmt->bindParam(":precio", $precio,PDO::PARAM_INT);
+        $stmt->bindParam(" Valor",  $Valor,PDO::PARAM_INT);
         $stmt->bindParam(":Nombre_Categoria", $Nombre_Categoria,PDO::PARAM_STR);
         $stmt->bindParam(":Nombre_Clasificacion", $Nombre_Clasificacion,PDO::PARAM_STR);
         $stmt->bindParam(":Descripcion", $Descripcion,PDO::PARAM_STR);
@@ -253,8 +253,8 @@ $stmt->bindParam(":ID_Producto", $ID_Producto,PDO::PARAM_STR);
 $IMG="../Fotos/".$datosModel["IMG"];
 
 $stmt = Database::getconectar()->prepare("INSERT into $tabla(ID_Producto,Nombre_Producto,
-Imagen_Producto,Talla,Color,Material,precio,Descripcion,ID_categoria,ID_clasificacion) 
-values (:ID_Producto,:Nombre_Producto,:Imagen_Producto,:Talla,:Color,:Material,:precio,:Descripcion,
+Imagen_Producto,Talla,Color,Material Valor,Descripcion,ID_categoria,ID_clasificacion) 
+values (:ID_Producto,:Nombre_Producto,:Imagen_Producto,:Talla,:Color,:Material, Valor,:Descripcion,
 :ID_categoria,:ID_clasificacion)");
 
 $stmt->bindParam(":ID_Producto", $datosModel["ID_Producto"],PDO::PARAM_STR);
@@ -263,7 +263,7 @@ $stmt->bindParam(":ID_Producto", $datosModel["ID_Producto"],PDO::PARAM_STR);
         $stmt->bindParam(":Talla", $datosModel["Talla"],PDO::PARAM_STR);
         $stmt->bindParam(":Color", $datosModel["Color"],PDO::PARAM_STR);
         $stmt->bindParam(":Material", $datosModel["Material"],PDO::PARAM_STR);
-        $stmt->bindParam(":precio", $datosModel["precio"],PDO::PARAM_STR);
+        $stmt->bindParam(" Valor", $datosModel["Valor"],PDO::PARAM_STR);
         $stmt->bindParam(":Descripcion", $datosModel["Descripcion"],PDO::PARAM_STR);
         $stmt->bindParam(":ID_categoria", $datosModel["ID_categoria"],PDO::PARAM_STR);
         $stmt->bindParam(":ID_clasificacion", $datosModel["ID_clasificacion"],PDO::PARAM_STR);
@@ -279,7 +279,7 @@ $stmt->bindParam(":ID_Producto", $datosModel["ID_Producto"],PDO::PARAM_STR);
 
  public function editarproducto($ID_Producto,$tabla){
     $stmt = Database::getconectar()->prepare("SELECT ID_Producto, Nombre_Producto, Imagen_Producto, 
-    Talla, Color, Material, precio, Nombre_Categoria, Nombre_Clasificacion,
+    Talla, Color, Material, Valor, Nombre_Categoria, Nombre_Clasificacion,
     Descripcion 
     FROM $tabla
     join categoria on producto.ID_categoria = categoria.ID_Categoria
@@ -295,7 +295,7 @@ $stmt->bindParam(":ID_Producto", $ID_Producto,PDO::PARAM_STR);
         $stmt->bindParam(":Talla", $Talla,PDO::PARAM_STR);
         $stmt->bindParam(":Color", $Color,PDO::PARAM_STR);
         $stmt->bindParam(":Material", $Material,PDO::PARAM_STR);
-        $stmt->bindParam(":precio", $precio,PDO::PARAM_INT);
+        $stmt->bindParam(" Valor",  $Valor,PDO::PARAM_INT);
         $stmt->bindParam(":Descripcion", $Descripcion,PDO::PARAM_STR);
         $stmt->bindParam(":ID_categoria", $ID_categoria,PDO::PARAM_STR);
         $stmt->bindParam(":ID_clasificacion", $ID_clasificacion,PDO::PARAM_STR);
@@ -341,7 +341,7 @@ return $stmt->fetchAll();
  public function volverImagen($ID_Producto,$tabla){
 
 $stmt = Database::getconectar()->prepare("SELECT ID_Producto, Nombre_Producto, Imagen_Producto, 
-Talla, Color, Material, precio, Nombre_Categoria, Nombre_Clasificacion,
+Talla, Color, Material, Valor, Nombre_Categoria, Nombre_Clasificacion,
 Descripcion 
 FROM $tabla
 join categoria on producto.ID_categoria = categoria.ID_Categoria
@@ -357,7 +357,7 @@ $stmt->bindParam(":ID_Producto", $ID_Producto,PDO::PARAM_STR);
         $stmt->bindParam(":Talla", $Talla,PDO::PARAM_STR);
         $stmt->bindParam(":Color", $Color,PDO::PARAM_STR);
         $stmt->bindParam(":Material", $Material,PDO::PARAM_STR);
-        $stmt->bindParam(":precio", $precio,PDO::PARAM_INT);
+        $stmt->bindParam(" Valor",  $Valor,PDO::PARAM_INT);
         $stmt->bindParam(":Descripcion", $Descripcion,PDO::PARAM_STR);
         $stmt->bindParam(":Nombre_Categoria", $ID_categoria,PDO::PARAM_STR);
         $stmt->bindParam(":Nombre_Clasificacion", $ID_clasificacion,PDO::PARAM_STR);
@@ -397,9 +397,9 @@ if($datosModel["Imagen_Producto"] == "../administrador/Fotos/".$datosModel["IMG"
       
  }
 
-$stmt = Database::getconectar()->prepare("UPDATE $tabla set ID_Producto=:ID_Producto,
+$stmt = Database::getconectar()->prepare("UPDATE $tabla set 
 Nombre_Producto=:Nombre_Producto,
-Imagen_Producto = :Imagen_Producto,Talla=:Talla,Color=:Color,Material=:Material,precio=:precio,
+Imagen_Producto = :Imagen_Producto,Talla=:Talla,Color=:Color,Material=:Material,Valor=:Valor,
 Descripcion=:Descripcion,
 ID_categoria=:ID_categoria,ID_clasificacion = :ID_clasificacion
 where ID_Producto = :ID_Producto");
@@ -410,7 +410,7 @@ $stmt->bindParam(":ID_Producto", $datosModel["ID_Producto"],PDO::PARAM_STR);
         $stmt->bindParam(":Talla", $datosModel["Talla"],PDO::PARAM_STR);
         $stmt->bindParam(":Color", $datosModel["Color"],PDO::PARAM_STR);
         $stmt->bindParam(":Material", $datosModel["Material"],PDO::PARAM_STR);
-        $stmt->bindParam(":precio", $datosModel["precio"],PDO::PARAM_INT);
+        $stmt->bindParam(":Valor", $datosModel["Valor"],PDO::PARAM_INT);
         $stmt->bindParam(":Descripcion", $datosModel["Descripcion"],PDO::PARAM_STR);
         $stmt->bindParam(":ID_categoria", $datosModel["ID_categoria"],PDO::PARAM_STR);
         $stmt->bindParam(":ID_clasificacion", $datosModel["ID_clasificacion"],PDO::PARAM_STR);
