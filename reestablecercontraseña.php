@@ -4,7 +4,7 @@
     <title>Tienda MT</title>
     <meta charset="utf-8">
     <link rel="icon" href="iconos/logomt.PNG"width="100%" height="100%"/>
-    <link href="estiloscss/estilosesion.css"rel="StyleSheet">
+    <link href="estiloscss/estilorescon.css"rel="StyleSheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 

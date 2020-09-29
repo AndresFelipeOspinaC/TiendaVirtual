@@ -118,6 +118,11 @@ nav .enlaces a:hover{
     background-color: var(--color4);
 }
 
+.rescon h1{
+    color: var(--color4);
+}
+
+
 .guardar{
     width: 60%;
     text-align: center;
