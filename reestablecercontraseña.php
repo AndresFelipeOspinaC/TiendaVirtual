@@ -41,7 +41,7 @@
             <h1>  Reestablecer Contraseña </h1>
             <p> Correo Electronico: </p> <input type="email" name="Correo"/>
             <p> Numero de Identificacion: </p> <input type="text" name="ID_Usuario"/><br><br>
-            <input type="submit" value="Reestablecer Contraseña"/>
+            <input type="submit" value="Reestablecer Contraseña"class="guardar"/>
         </form>
     </div>
 

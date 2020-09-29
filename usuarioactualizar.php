@@ -165,7 +165,7 @@ if(isset($_SESSION["usuario"])){
                 <input type="text"  value="<?php echo $item["observaciones"] ;   ?> " name="observaciones" /> </div>
                 </div>
                 
-        <input class="guardar" type="submit" value="Guardar"/>
+        <input class="guardar" type="submit" value="Guardar" class="guardar">
     <!--<a href="perfilusuario.php"> Volver a ver perfil </a>-->
     </form>
 </section>

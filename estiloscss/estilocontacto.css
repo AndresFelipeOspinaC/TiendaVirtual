@@ -167,6 +167,19 @@ h2{
     right: -45%;
 }
 
+.guardar{
+    width: 60%;
+    text-align: center;
+    background: rgb(70, 5, 5);
+    color: #f2f2f2;
+    border: none;
+}
+.guardar:hover{
+    background: rgb(0, 102, 255);
+}
+
+
+
 footer{
     background: linear-gradient(to bottom,
     rgba(16, 50, 90, 0.6),
