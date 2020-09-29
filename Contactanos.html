@@ -5,7 +5,7 @@
     <! --logo en pestaña--¡>
     <link rel="icon" href="iconos/logomt.PNG"width="100%" height="100%"/>
     <meta charset="utf-8">
-    <link href="estiloscss/estilosindex.css"rel="StyleSheet">
+    <link href="estiloscss/estilocontacto.css"rel="StyleSheet">
 
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -33,37 +33,45 @@
         </nav>
         <div class="textos">
             <h1>Mis Trapitos</h1>
-            <h2>Tienda de Ropa Online</h2>
+            <h2>Tienda de Ropa Online</h2> 
         </div>
     </header>
-    <section class="pqrs">
-            <div class="formcontactanos">
-            <form method="POST" action="contactanos.php">
-            <h2>Contactanos</h2>
-            <div class="form-group">
-            <label for="exampleFormControlInput1">Nombre</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" name="nombre">
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlInput1">Correo</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"name="correo">
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlInput1">Telefono</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" name="telefono">
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlInput1">Asunto</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1"name="asunto">
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlTextarea1">Ingrese su Solicitud o Cotizacion</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1"name="Descripcion" rows="3"></textarea>
-        </div>
-        <div class="botonenviar">
-        <input type="submit" id="enviar" name="Enviar"></div>
+
+    <h2>Contactanos</h2>
+
+    <section class="pqrs" id="pqr">
+
+        <form method="POST" action="contactanos.php">
+
+        <div class="form"> Nombre: </div>
+            <div class="resp">        
+            <input type="text" name="nombre">
+            </div>
+
+        <div class="form"> Correo: </div>
+            <div class="resp">        
+            <input type="text" name="correo">
+            </div>
+
+        <div class="form"> Telefono: </div>
+            <div class="resp">        
+            <input type="text" name="telefono">
+            </div>
+
+        <div class="form"> Asunto: </div>
+            <div class="resp">        
+            <input type="text" name="nombre">
+            </div>
+            
+        <div class="form"> Dejanos tu Comentario, Solicitud o Queja: </div>    
+            <textarea type="text" name="Descripcion" rows="4" cols="50">
+            </textarea><br>
+            
+            <input type="submit" value="Enviar" id="enviar">
+            <a href="index.html">Regresar a la Página Principal</a>
+
         </form>
-        </div>
+
     </section>
 
 
