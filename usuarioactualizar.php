@@ -56,7 +56,7 @@ if(isset($_SESSION["usuario"])){
 
 <section class="usuarioactualiza" id="regi">
 
-        <form  method="POST" action="http://localhost/proyecto-mistrapitos/3.DESARROLLO/HTML2/CRUD-SERVICIOS/api.php?apicall=updateusuario">
+        <form  method="POST" action="http://localhost/tiendavirtual/crudservicios/api.php?apicall=updateusuario">
         
         <div class="form"> Tipo de Documento: </div> 
             <div class="resp">

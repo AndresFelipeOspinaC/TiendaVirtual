@@ -22,3 +22,17 @@ body{
 img{
     vertical-align: top;
 }
+header{
+    width: 100%;
+    height: 600px;
+    background: linear-gradient(to bottom,
+    rgba(206, 201, 203, 0.6),
+    rgba(29,100,171, .6),
+    rgb(250, 162, 67)
+    ), url(../img/fondo.jpg);
+    background-attachment:fixed;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: var(--espacios-contenido);
+
+}
