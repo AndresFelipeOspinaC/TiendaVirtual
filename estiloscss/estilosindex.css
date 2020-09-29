@@ -81,8 +81,8 @@ nav .enlaces a:hover{
 }
 .logo, .logo img{
     width: 150px;
-    height: 120px;}
-
+    height: 120px;
+}
 .icono{
     display: none;
     font-size: 24px;
@@ -152,13 +152,12 @@ nav .enlaces a:hover{
 }
 
   
-  .about{
-    width: 100%;
+.about{
     background: linear-gradient(to bottom,
     rgba(68, 103, 139, 0.616),
     rgba(6, 12, 17, 0.315)
     ), url(../img/fondo4.jpg);
-    height: auto; 
+    height: auto;
     margin-bottom: var(--espacios-contenido);
 }
 

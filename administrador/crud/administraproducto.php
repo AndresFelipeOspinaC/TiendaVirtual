@@ -10,6 +10,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html lang="en">
 <head>
   <meta charset="utf-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Administrador MT</title>
   <!-- Google Font: Source Sans Pro -->
@@ -19,6 +20,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <link href="admin.css"rel="StyleSheet">
+
+    <link href="../../estiloscss/estiloadminproducto.css"rel="StyleSheet">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -30,10 +33,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index.php" class="nav-link">Nosotros</a>
+        <a href="#" class="nav-link">Nosotros</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Productos</a>
+        <a href="admincrearproducto.php" class="nav-link">Productos</a>
       </li>
     </ul>
 
@@ -133,6 +136,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- /.sidebar-menu -->
       </div>
     </aside>
+
+
+
+
+
+
+
+
+    
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
   <main class="container p-4">
@@ -212,6 +224,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </table>
     <!--   -->
     </div>
+<<<<<<< HEAD
 <div class="containerform">
 <form action="http://localhost/tiendaVirtual/crudservicios/api.php?apicall=createproducto" method="POST" enctype="multipart/form-data">
 
@@ -245,6 +258,80 @@ Clasificacion: <select name="ID_clasificacion" id="ID_clasificacion">
 </form>
 </div>
 </div>
+=======
+<section class="crearproductos" id="crear">
+  <form action="http://localhost/tiendaVirtual/crudservicios/api.php?apicall=createproducto" method="POST" enctype="multipart/form-data">
+
+      <div class="proingresa1"> Código del Producto </div>
+        <div class="resp1">
+        <input type="text" name="ID_Producto" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;
+        VALOR UNICO" />
+        </div>
+
+      <div class="proingresa1"> Nombre del Producto: </div>
+        <div class="resp1">
+        <input type="text" name="Nombre_Producto" id="Nombre_Producto">
+        </div>
+
+      <div class="proingresa1"> Imagen del Producto: </div>
+        <div class="resp1">
+        <input type="file" name="Imagen_Producto">
+        </div>
+
+      <div class="proingresa1"> Talla: </div>
+        <div class="resp1">
+        <input type="text" name="Talla" id="Talla">
+        </div>
+
+      <div class="proingresa1"> Color: </div>
+        <div class="resp1">
+        <input type="text" name="Color" id="Color">
+        </div>
+
+      <div class="proingresa2"> Material: </div>
+        <div class="resp2">
+        <input type="text" name="Material" id="Materia">
+        </div>
+
+      <div class="proingresa2"> precio: </div>
+        <div class="resp2">
+        <input type="text" name="precio" id="precio">
+        </div>
+
+      <div class="proingresa2"> Descripcion: </div>
+        <div class="resp2">
+        <input type="text" name="Descripcion" id="Descripcion">
+        </div>
+
+      <div class="proingresa2"> Categoria: </div>
+          <div class="resp2">
+            <select name="ID_categoria" id="ID_categoria"> 
+              <option>Chaquetas</option>
+              <option>Pantalones</option>
+              <option>Formal</option>
+              <option>Informal</option>
+              <option >Blusa</option>
+            </select></br>
+          </div>
+
+      <div class="proingresa2"> Clasificacion: </div>
+          <div class="resp2">
+            <select name="ID_clasificacion" id="ID_clasificacion"> 
+              <option>Unisex</option>
+              <option>Mujeres</option>
+              <option>Niños</option>
+              <option>Bebes</option>
+              <option>Niñas</option>
+              <option>Hombres</option>
+            </select></br>
+          </div>
+
+            <input type="submit" value="Guardar"class="guardar">
+          
+    
+  </section>
+
+>>>>>>> f5252043fdcd84b832f58a62f01ac3d05120e48c
 </main>
     <!-- Content Header (Page header) -->
     <div class="content-header">

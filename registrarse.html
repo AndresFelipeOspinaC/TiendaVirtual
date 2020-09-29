@@ -3,7 +3,8 @@
     <head>
     <title>Tienda MT</title>
     <meta charset="utf-8">
-    <link href="estiloregistrarse.css"rel="StyleSheet">
+    <link rel="icon" href="iconos/logomt.PNG"width="100%" height="100%"/>
+    <link href="estiloscss/estiloregistro.css"rel="StyleSheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
@@ -28,68 +29,122 @@
                 </div>
             </div>
         </nav>
+        <div class="textos">
+            <h1>Mis Trapitos</h1>
+            <h2>Tienda de Ropa Online</h2>
+        </div>
     </header>
 
-    <div class="Registro">
-    <form action="http://localhost/proyecto-mistrapitos/3.DESARROLLO/HTML2/CRUD-SERVICIOS/api.php?apicall=createusuario" method="POST"></br></br>
-    <h1>Datos de Contacto</h1>
-    Tipo de Documento:
-    <select name="ID_Tipo_Documento"> 
-        <option> Registro Cívil </option>
-        <option> Pasaporte Extranjero </option>
-        <option> Tarjeta de Identidad </option>
-        <option> Cédula de Ciudadanía </option>
-        <option> Cédula de Extranjería </option>
-        </select></br></br>
-        Numero de Documento:
-        <input type="text" name="ID_Usuario"></br></br>
-        Ingrese su primer nombres: 
-        <input type="text" name="Primer_Nombre"></br></br>
-        Ingrese su segundo nombre: 
-        <input type="text" name="Segundo_Nombre"></br></br>
-        Ingrese su primer apellido: 
-        <input type="text" name="Primer_Apellido"></br></br>
-        Ingrese su segundo apellido: 
-        <input type="text" name="Segundo_Apellido"></br></br>
-        Fecha de Nacimiento: 
-        <input type="date" name="fecha_nacimiento"></br></br>
-        Telefono:
-        <input type="text" name="Telefono"></br></br>
-        Ingrese E-mail: 
-        <input type="email" name="Correo"></br></br>
-        Ingrese su Nueva contraseña: 
-        <input type="password" name="Contrasena"></br></br>
-        Confirmar Contraseña: 
-         <input type="password" name="confirmar_Contrasena"></br></br>
-        Genero: 
-        <select name="ID_Genero"> 
-        <option> Masculino </option>
-        <option> Femenino </option>
-        </select>
-        <br></br>
-        Ciudad: 
-        <select type="text" name="ID_Ciudad">
-        <option> Bogotá </option>
-        <option> Cali </option>
-        <option> Medellín </option>
-       </select>
-       <br></br>
-        <H2>Datos del Domicilio</h2>
-        Ingrese direccion:
-        <input type="text" name="direccion"></br></br>
-        Piso,Apto, casa, etc:
-        <input type="text" name="observaciones"></br></br>
-        Rol: 
-        <select type="text" name="ID_Rol">
-         <option> Usuario </option>
-         <option> Administrador </option>
-        </select>
-         </br>
-        <input type="submit" value="Enviar" id="boton1"></br>
+    <h2>Datos de Contacto</h2>
+
+<section class="registro" id="regi">
+    
+    <form action="http://localhost/tiendavirtual/crudservicios/api.php?apicall=createusuario" method="POST">
+    <br>
+    
+        <div class="form"> Tipo de Documento: </div>
+            <div class="resp">
+            <select name="ID_Tipo_Documento"> 
+            <option> Registro Cívil </option>
+            <option> Pasaporte Extranjero </option>
+            <option> Tarjeta de Identidad </option>
+            <option> Cédula de Ciudadanía </option>
+            <option> Cédula de Extranjería </option>
+            </select> 
+            </div>
+
+        <div class="form"> Numero de Documento: </div>
+            <div class="resp">        
+            <input type="text" name="ID_Usuario">
+            </div>
+
+        <div class="form"> Ingrese su primer nombres: </div>
+            <div class="resp"> 
+            <input type="text" name="Primer_Nombre">
+            </div>
+
+        <div class="form"> Ingrese su segundo nombre: </div> 
+            <div class="resp">
+            <input type="text" name="Segundo_Nombre">
+            </div>
+
+        <div class="form"> Ingrese su primer apellido: </div>
+            <div class="resp">
+            <input type="text" name="Primer_Apellido">
+            </div>
+
+        <div class="form"> Ingrese su segundo apellido: </div>
+            <div class="resp">
+            <input type="text" name="Segundo_Apellido">
+            </div>
+
+        <div class="form"> Fecha de Nacimiento: </div>
+            <div class="resp">
+            <input type="date" name="fecha_nacimiento">
+            </div>
+
+        <div class="form"> Telefono: </div>
+            <div class="resp">
+            <input type="text" name="Telefono">
+            </div>
+
+        <div class="form"> Ingrese E-mail: </div> 
+            <div class="resp">
+            <input type="email" name="Correo">
+            </div>
+            
+        <div class="form"> Ingrese su Nueva contraseña:</div> 
+            <div class="resp">
+            <input type="password" name="Contrasena">
+            </div>
+
+        <div class="form"> Confirmar Contraseña: </div>
+            <div class="resp">
+            <input type="password" name="confirmar_Contrasena">
+            </div>
+
+        <div class="form"> Genero: </div>
+            <div class="resp">
+            <select name="ID_Genero"> 
+            <option> Masculino </option>
+            <option> Femenino </option>
+            </select></p>
+            </div>
+
+        <div class="form"> Ciudad: </div>
+            <div class="resp">
+            <select type="text" name="ID_Ciudad">
+            <option> Bogotá </option>
+            <option> Cali </option>
+            <option> Medellín </option>
+            </select> </p>
+            </div>
+
+        <h4>Datos del Domicilio</h4>
+
+        <div class="form"> Ingrese direccion: </div>
+            <div class="resp">
+            <input type="text" name="direccion"></p>
+            </div>
+
+        <div class="form"> Piso,Apto, casa, etc:</div>
+            <div class="resp">
+            <input type="text" name="observaciones"></p>
+            </div>
+
+        <div class="form"> Rol: </div>
+            <div class="resp">
+            <select type="text" name="ID_Rol">
+            <option> Usuario </option>
+            <option> Administrador </option>
+            </select> 
+            </div>
+
+        <input type="submit" value="Enviar" id="boton1" class="guardar"><br>
         <a href="index.html">Regresar a la Página Principal</a>
     </form>
-    </div>
-
+    
+</section>
 
     <footer>
       <! --Seccion de contacto (footer)-->

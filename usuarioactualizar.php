@@ -7,6 +7,8 @@ if(isset($_SESSION["usuario"])){
     <head>
     <title>Tienda MT</title>
     <meta charset="UTF-8">
+    <link rel="icon" href="iconos/logomt.PNG"width="100%" height="100%"/>
+
     <link href="estiloscss/estilousuarioactualizar.css"rel="StyleSheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -42,101 +44,131 @@ if(isset($_SESSION["usuario"])){
   
     <section class="perfil" id="perfil">
     <div class="info">
-<h2 class="after">Mis Datos</h2>
+<h2>Mis Datos</h2>
 </div>
   <?php
-
-require("crudservicios/modelojson.php");
-
-$mostrar2 = new Datos();
-
-
-
-$resultado =$mostrar2->readUsuarioModel($_SESSION["usuario"],"usuario");
-
-if($resultado){
-
-    foreach($resultado as $row => $item){
-
+        require("crudservicios/modelojson.php");
+        $mostrar2 = new Datos();
+        $resultado =$mostrar2->readUsuarioModel($_SESSION["usuario"],"usuario");
+        if($resultado){
+            foreach($resultado as $row => $item){
   ?>
 
-<div class="usuarioactualiza">
-<form action="http://localhost/proyecto-mistrapitos/3.DESARROLLO/HTML2/CRUD-SERVICIOS/api.php?apicall=updateusuario" 
-method="POST">
-<small> Tipo de Documento: 
-    <?php echo $item["Nombre"] ;   ?> </small>
-    <input type="hidden" name="ID_Tipo_Documento" value="<?php echo $item["Nombre"];  ?>">
-<small> Número de Documento:
-    <?php echo $item["ID_Usuario"] ;   ?> </small>
-    <input type="hidden" name="ID_Usuario" value="<?php echo $item["ID_Usuario"];  ?>">
-<small> Rol: 
-    <?php echo $item["Nombre_Rol"] ;   ?> </small>
+<section class="usuarioactualiza" id="regi">
+
+        <form  method="POST" action="http://localhost/tiendavirtual/crudservicios/api.php?apicall=updateusuario">
+        
+        <div class="form"> Tipo de Documento: </div> 
+            <div class="resp">
+            <?php echo $item["Nombre"] ;?>
+                <input type="hidden" name="ID_Tipo_Documento" value="<?php echo $item["Nombre"];  ?>">
+                </div> 
+        
+        
+        <div class="form"> Número de Documento:</div>
+        <div class="resp">
+            <?php echo $item["ID_Usuario"] ;   ?> 
+                <input type="hidden" name="ID_Usuario" value="<?php echo $item["ID_Usuario"];  ?>">
+                </div>
+        
+        <div class="form"> Rol: </div>
+        <div class="resp">
+            <?php echo $item["Nombre_Rol"] ;   ?> </div>
+            </div>
+
+        <div class="form"> Género:</div> 
+        <div class="resp">
+            <select name="ID_Genero">  
+                <option> <?php echo $item["Nombre_Genero"] ;   ?> </option>
+                <?php $Nombre_Genero = new Datos(); 
+                $MostrarGenero = $Nombre_Genero->todoGeneroModel($item["Nombre_Genero"],"genero");
+                if($MostrarGenero){
+                foreach($MostrarGenero as $rowgen => $itemgen){
+                ?>;
+                <option> <?php echo $itemgen["Nombre_Genero"];}} ?>
+                </option>
+            </select > </div> 
+
+        <div class="form"> Ciudad: </div>
+        <div class="resp">
+            <select name="ID_Ciudad"> 
+                <option><?php echo $item["Nombre_Ciudad"] ;  ?> </option>
+                <?php $medellin = new Datos();
+                $mostrarMedellin = $medellin->mostrarCiudades("Medellín","ciudad");
+                if($mostrarMedellin){
+                foreach($mostrarMedellin as $rowMedellin => $itemMedellin){
+                ?> 
+                <option> <?php echo $itemMedellin["Nombre_Ciudad"] ;   }}?> </option>
+                <?php $cali  = new Datos();
+                $mostrarCali = $cali->mostrarCiudades("Cali","ciudad");
+                if($mostrarCali){
+                foreach($mostrarCali as $rowCali => $itemCali){
+                ?>
+                <option> <?php echo $itemCali["Nombre_Ciudad"] ;}} ?> </option>
+
+                <?php $bogota  = new Datos();
+                $mostrarBogota = $cali->mostrarCiudades("Bogotá","ciudad");
+                if($mostrarBogota){
+                foreach($mostrarBogota as $rowBogota => $itemBogota){
+                ?>
+                <option> <?php echo $itemBogota["Nombre_Ciudad"] ;}} ?> </option>
+            </select> </div>
 
 
-<small> Género:
-<select name="ID_Genero">  
-<option> <?php echo $item["Nombre_Genero"] ;   ?> </option>
- <?php $Nombre_Genero = new Datos(); 
-$MostrarGenero = $Nombre_Genero->todoGeneroModel($item["Nombre_Genero"],"genero");
-if($MostrarGenero){
-foreach($MostrarGenero as $rowgen => $itemgen){
-?>;
-<option> <?php echo $itemgen["Nombre_Genero"];}} ?>
-</option>
- </select > </small> 
-
-<small> Ciudad: 
-<select name="ID_Ciudad"> 
-<option><?php echo $item["Nombre_Ciudad"] ;  ?> </option>
-<?php $medellin = new Datos();
-$mostrarMedellin = $medellin->mostrarCiudades("Medellín","ciudad");
-if($mostrarMedellin){
-foreach($mostrarMedellin as $rowMedellin => $itemMedellin){
-?> 
-<option> <?php echo $itemMedellin["Nombre_Ciudad"] ;   }}?> </option>
-<?php $cali  = new Datos();
-$mostrarCali = $cali->mostrarCiudades("Cali","ciudad");
-if($mostrarCali){
-foreach($mostrarCali as $rowCali => $itemCali){
-?>
-<option> <?php echo $itemCali["Nombre_Ciudad"] ;}} ?> </option>
-
-<?php $bogota  = new Datos();
-$mostrarBogota = $cali->mostrarCiudades("Bogotá","ciudad");
-if($mostrarBogota){
-foreach($mostrarBogota as $rowBogota => $itemBogota){
-?>
-<option> <?php echo $itemBogota["Nombre_Ciudad"] ;}} ?> </option>
-
-
-
-</select> </small>
-
-
-<small> Primer Nombre: 
-<input type="text"  value="<?php echo $item["Primer_Nombre"] ;   ?> " name="Primer_Nombre"/></small>
-<small> Segundo Nombre: 
-<input type="text"  value="<?php echo $item["Segundo_Nombre"] ;   ?> " name="Segundo_Nombre"/></small>
-<small> Primer Apellido: 
-<input type="text"  value="<?php echo $item["Primer_Apellido"] ;   ?> " name="Primer_Apellido"/></small> 
-<small> Segundo Apellido:
-<input type="text"  value="<?php echo $item["Segundo_Apellido"] ;   ?> " name="Segundo_Apellido"/> </small>
-<small> Fecha de Nacimiento:
-<input type="text"  value="<?php echo $item["fecha_nacimiento"] ;   ?> " name="fecha_nacimiento" /></small> 
-<small> Teléfono:  
-<input type="text"  value="<?php echo $item["Telefono"] ;   ?> " name="Telefono"  /></small>
-<small> Correo Electrónico: 
-<input type="email"  value="<?php echo $item["Correo"] ;   ?> " name="Correo"  /></small> 
-<small> Contraseña: 
-<input type="password"  value="<?php echo $item["Contrasena"] ;?> " name="Contrasena"  /></small> 
-<small> Dirección:  
-<input type="text"  value="<?php echo $item["direccion"] ;   ?> " name="direccion" /></small>
-<small> Observaciones: 
-<input type="text"  value="<?php echo $item["observaciones"] ;   ?> " name="observaciones" /> </small>
-<input class="guardar" type="submit" value="Guardar"/>
-<!--<a href="perfilusuario.php"> Volver a ver perfil </a>-->
-</form>
-</div>
+        <div class="form"> Primer Nombre: </div>
+            <div class="resp">
+                <input type="text"  value="<?php echo $item["Primer_Nombre"] ;   ?> " name="Primer_Nombre"/>
+                </div>
+                
+        <div class="form"> Segundo Nombre: </div>
+            <div class="resp">
+                <input type="text"  value="<?php echo $item["Segundo_Nombre"] ;   ?> " name="Segundo_Nombre"/></div>
+                </div>
+                
+        <div class="form"> Primer Apellido: </div>
+            <div class="resp">
+                <input type="text"  value="<?php echo $item["Primer_Apellido"] ;   ?> " name="Primer_Apellido"/></div> 
+                </div>
+                
+        <div class="form"> Segundo Apellido:</div>
+            <div class="resp">
+                <input type="text"  value="<?php echo $item["Segundo_Apellido"] ;   ?> " name="Segundo_Apellido"/> </div>
+                </div>
+                
+        <div class="form"> Fecha de Nacimiento:</div>
+            <div class="resp">
+                <input type="text"  value="<?php echo $item["fecha_nacimiento"] ;   ?> " name="fecha_nacimiento" /></div> 
+                </div>
+                
+        <div class="form"> Teléfono:  </div>
+            <div class="resp">
+                <input type="text"  value="<?php echo $item["Telefono"] ;   ?> " name="Telefono"  /></div>
+                </div>
+                
+        <div class="form"> Correo Electrónico: </div>
+            <div class="resp">
+                <input type="email"  value="<?php echo $item["Correo"] ;   ?> " name="Correo"  /></div> 
+                </div>
+                
+        <div class="form"> Contraseña: </div>
+            <div class="resp">
+                <input type="password"  value="<?php echo $item["Contrasena"] ;?> " name="Contrasena"  /></div> 
+                </div>
+                
+        <div class="form"> Dirección:  </div>
+            <div class="resp">
+                <input type="text"  value="<?php echo $item["direccion"] ;   ?> " name="direccion" /></div>
+                </div>
+                
+        <div class="form"> Observaciones: </div>
+            <div class="resp">
+                <input type="text"  value="<?php echo $item["observaciones"] ;   ?> " name="observaciones" /> </div>
+                </div>
+                
+        <input class="guardar" type="submit" value="Guardar" class="guardar">
+    <!--<a href="perfilusuario.php"> Volver a ver perfil </a>-->
+    </form>
+</section>
   
 
 

@@ -6,10 +6,9 @@
     --fondo: #f2f2f2;
     --titulos: 33px;
     --margenes: 60px;
-    --espacios: 30px;
+    --espacios: 50px;
     --espacios-contenido:45px;
 }
-
 *{
     margin: 0;
     padding: 0;
@@ -17,13 +16,11 @@
 }
 body{
     font-family: 'arial';
-    background: var(--fondo);
+    background: black;
 }
 img{
     vertical-align: top;
 }
-
-/* header*/
 header{
     width: 100%;
     height: 600px;
@@ -35,11 +32,12 @@ header{
     background-attachment:fixed;
     background-position: center;
     background-size: cover;
+    margin-bottom: var(--espacios-contenido);
 }
 nav{
     width: 100%;
     position: fixed;
-    box-shadow: 0 0 10px 0  rgba(0,0,0,.5);
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.5);
 }
 .nav1{
     background: transparent;
@@ -51,7 +49,6 @@ nav{
     height: 100px;
     color: #000;
 }
-
 .contenedor-nav{
     display: flex;
     margin: auto;
@@ -62,7 +59,6 @@ nav{
     height: inherit;
     overflow: hidden;
 }
-
 nav .enlaces a{
     display: inline-block;
     padding: 5px 0;
@@ -71,32 +67,33 @@ nav .enlaces a{
     font-weight: 300;
     text-decoration: none;
     border-bottom: 3px solid transparent;
-    color: rgb(107, 7, 7);
-}
+    color: var(--color4);
+    }
 nav .enlaces a:hover{
-    border-bottom: 3px solid rgb(50, 67, 223);
-    transition: 0.6s;
+    border-bottom: 3px solid var(--color3);
 }
 .logo, .logo img{
     width: 150px;
-    height: 120px;}
-
+    height: 120;
+}
 .icono{
     display: none;
     font-size: 24px;
     padding: 23px 20px;
 }
+
 .textos{
-    width: 100%;
+    width: 100%;  
     height: 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    color: #f2f2f2;
+    color:#ffff;
     overflow: hidden;
     text-align: center;
 }
+
 .textos>h1{
     font-size: 80px;
 }
@@ -105,72 +102,20 @@ nav .enlaces a:hover{
     font-weight: 300;
     color: var(--color4);
 }
-
-
-
-  /*conexion a php con la pagina usuario actualizar.php*/
-  .usuarioactualiza{ 
-    position: relative;
-    right:-350px;
-      width:50%;
-      height:650px;
-     font-size:20px;
-     background: linear-gradient(to bottom,
-     rgba(206, 201, 203, 0.6),
-     rgba(29,100,171, .3),
-     rgba(250, 161, 67, 0.685)
-     );
-    text-align: center;
-    padding: 10px;
-    margin-bottom: var(--espacios-contenido);
-  }
-
-
-  .after::after{
-    content: '';
-    display: block;
+.contenedor1{
     margin: auto;
-    margin-top: var(--espacios);
-    width: 100px;
-    height: 2px;
-    background: var(--color4);
-    margin-bottom: var(--espacios-contenido);
-}.info{
-    color: var(--color4);
+    width: 90%;
+    max-width: 1000px;
     text-align: center;
+    overflow: hidden;
 }
-
-
-
-   /*conexion a php con la pagina usuario actualizar.php*/
-  .usuarioactualiza small {
+.contenedor1 h3{
+    font-size: var(--titulos);
     color: var(--color4);
-
-    display: block;
-    margin:15px;
-  }
-
-  .usuarioactualiza a{
-    background: rgb(134, 7, 7);
-    color:var(--color4);
-   margin:15px;
-    width:70%;
-    height:50%;
-    
-  }
-
-  .usuarioactualiza a:hover{
-    color:#f2f2f2;
-    background: var(--color4);   
-    border: solid var(--color4);
-  }
-
-
-
-
+}
 .contenedor{
     margin: auto;
-    padding: var(--margenes)0;
+    padding: var(--margenes);
     width: 90%;
     max-width: 1000px;
     text-align: center;
@@ -179,20 +124,58 @@ nav .enlaces a:hover{
 .contenedor h3{
     font-size: var(--titulos);
     color: var(--color4);
-    margin-bottom: var(--espacios);
 }
-
-
 .contenedor p{
     font-size: var(--subtitulos);
     font-weight: 300;
     color: var(--color4);
 }
 
+h2{
+    color: var(--color4);
+    text-align: center;
+}
 
-
- 
-
+#regi{
+    color: var(--color4);
+    display: block;
+    margin:15px;
+}
+#regi{
+    position: relative;
+    right:-350px;
+    width:50%;
+   background: linear-gradient(to bottom,
+   rgba(206, 201, 203, 0.6),
+   rgba(29,100,171, .3),
+   rgba(250, 161, 67, 0.575));
+   text-align: center;
+   padding: 10px;
+   margin-bottom: var(--espacios-contenido);
+}
+.form{
+    display: flex;
+    text-align: center;
+    position: relative;
+    right: -20%;
+}
+.resp{
+    bottom: 28px;
+    display: flex;
+    text-align: center;
+    position: relative;
+    right: -55%;
+}
+.guardar{
+    width: 60%;
+    text-align: center;
+    background: rgb(70, 5, 5);
+    color: #f2f2f2;
+    border: none;
+}
+.guardar:hover{
+    background: rgb(0, 102, 255);
+}
 
 footer{
     background: linear-gradient(to bottom,
@@ -214,16 +197,16 @@ footer{
     justify-content: space-around;
     width: 100%;
 }
-
 .icono img{
     font-size: 60px;
     color: #f2f2f2;
     margin-bottom: var(--espacios);
     display: inline-block;
 }
-footer P{
+footer p{
     margin-top: var(--espacios);
 }
+
 
 /** media queries responsive **/
 @media screen and (max-width: 700px){

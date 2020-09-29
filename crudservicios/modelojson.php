@@ -150,12 +150,12 @@ where ID_Tipo_Documento= :ID_Tipo_Documento and ID_Usuario = :ID_Usuario");
     }
 
 
-    public function mostrarcontrasenaModel($Correo,$Contrasena,$tabla){
+    public function mostrarcontrasenaModel($Correo,$ID_Usuario,$tabla){
      
-        $stmt = Database::getconectar()->prepare("SELECT Correo,ID_Usuario,Contrasena FROM $tabla where Correo=:Correo and Contrasena=:Contrasena");
+        $stmt = Database::getconectar()->prepare("SELECT Correo,ID_Usuario,Contrasena FROM $tabla where Correo=:Correo and ID_Usuario=:ID_Usuario");
         
         $stmt->bindParam(":Correo",$Correo);
-        $stmt->bindParam(":Contrasena",$Contrasena);
+        $stmt->bindParam(":ID_Usuario",$ID_Usuario);
        
         $stmt->execute();
 
