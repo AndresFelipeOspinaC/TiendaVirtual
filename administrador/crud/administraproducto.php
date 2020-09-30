@@ -198,7 +198,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <i class="fas fa-marker"></i>
               </a>
 
-              <form action="http://localhost/TiendaVirtual/crudservicios/api.php?apicall=deleteproducto" method="post">
+              <form action="http://localhost/tiendavirtual/crudservicios/api.php?apicall=deleteproducto" method="post">
               
 
                 <input type="hidden" name="ID_Producto" value="<?php echo $item["ID_Producto"] ?>">
@@ -206,7 +206,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               
               </form>
               
-              <a href="http://localhost/TiendaVirtual/crudservicios/api.php?apicall=deleteproducto?ID_Producto=<?php echo $item["ID_Producto"]?>" class="btn btn-danger">
+              <a href="http://localhost/tiendavirtual/crudservicios/api.php?apicall=deleteproducto?ID_Producto=<?php echo $item["ID_Producto"]?>" class="btn btn-danger">
 
 
               

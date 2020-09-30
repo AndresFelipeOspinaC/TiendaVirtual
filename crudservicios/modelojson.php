@@ -4,6 +4,8 @@ require_once 'database.php';
 class Datos extends Database{
 
     //METODOS
+
+    // Usuarios
     public function createUsuarioModel($datosModel,$tabla){
         $stmt = Database::getconectar()->prepare("INSERT INTO $tabla(ID_Tipo_Documento,ID_Usuario,Primer_Nombre,Segundo_Nombre,Primer_Apellido,Segundo_Apellido,fecha_nacimiento,Telefono,Correo,Contrasena,confirmar_Contrasena,ID_Genero,ID_Ciudad,direccion,observaciones,ID_Rol) 
         VALUES(:ID_Tipo_Documento,:ID_Usuario,:Primer_Nombre,:Segundo_Nombre,:Primer_Apellido,:Segundo_Apellido,:fecha_nacimiento,:Telefono,:Correo,:Contrasena,:confirmar_Contrasena,:ID_Genero,:ID_Ciudad,:direccion,:observaciones,:ID_Rol)");
@@ -220,6 +222,9 @@ return $stmt->fetchAll();
 
  }
 
+
+ // Productos
+
  public function mostrarProductos(){
  
     $stmt = Database::getconectar()->prepare("SELECT ID_Producto, Nombre_Producto, Imagen_Producto,
@@ -410,7 +415,7 @@ $stmt->bindParam(":ID_Producto", $datosModel["ID_Producto"],PDO::PARAM_STR);
         $stmt->bindParam(":Talla", $datosModel["Talla"],PDO::PARAM_STR);
         $stmt->bindParam(":Color", $datosModel["Color"],PDO::PARAM_STR);
         $stmt->bindParam(":Material", $datosModel["Material"],PDO::PARAM_STR);
-        $stmt->bindParam(":Valor", $datosModel["Valor"],PDO::PARAM_INT);
+        $stmt->bindParam(":Valor", $datosModel["Valor"],PDO::PARAM_STR);
         $stmt->bindParam(":Descripcion", $datosModel["Descripcion"],PDO::PARAM_STR);
         $stmt->bindParam(":ID_categoria", $datosModel["ID_categoria"],PDO::PARAM_STR);
         $stmt->bindParam(":ID_clasificacion", $datosModel["ID_clasificacion"],PDO::PARAM_STR);
