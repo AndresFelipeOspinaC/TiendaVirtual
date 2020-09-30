@@ -305,7 +305,7 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
     if(isset($Imagen_Producto) && $Imagen_Producto= $_FILES["Imagen_Producto"]["name"] != ""){
         $Imagen_Producto= $_FILES["Imagen_Producto"]["name"];
       $ruta= $_FILES["Imagen_Producto"]["tmp_name"];
-      $destino="../administrador/Fotos/".$Imagen_Producto;
+      $destino="../administrador/fotos/".$Imagen_Producto;
      
       copy($ruta,$destino);
       
@@ -378,12 +378,12 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
       
     if(!$result){
         $respuesta['error'] = false;
-        $respuesta['mensaje'] = 'Producto No Existe';
+        $respuesta['mensaje'] = 'Producto Agregado';
         header("location:../administrador/crud/administraproducto.php");
     }else{
         $respuesta['error'] = true;
-        $respuesta['mensaje'] = 'Producto Eliminado';
-        header("location:../administrador/crud/administraproducto.php");
+        $respuesta['mensaje'] = 'Producto No Agregado';
+     header("location:../administrador/crud/administraproducto.php");
     }
       
 
@@ -431,7 +431,7 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
       if(isset($Imagen_Producto) &&  $Imagen_Producto = $_FILES["Imagen_Producto"] ["name"] != ""){
         $Imagen_Producto = $_FILES["Imagen_Producto"] ["name"];
       $ruta= $_FILES["Imagen_Producto"] ["tmp_name"];
-      $destino="../administrador/Fotos/".$Imagen_Producto;
+      $destino="../administrador/fotos/".$Imagen_Producto;
       copy($ruta,$destino);
       }
 
@@ -509,12 +509,12 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
 
  if(!$result){
     $respuesta['error'] = false;
-    $respuesta['mensaje'] = 'Producto No Existe';
+    $respuesta['mensaje'] = 'Producto No Actualiza';
     header("location:../administrador/crud/administraproducto.php");
 }else{
     $respuesta['error'] = true;
-    $respuesta['mensaje'] = 'Producto Eliminado';
-    header("location:../administrador/crud/administraproducto.php");
+    $respuesta['mensaje'] = 'Producto Actualizado';
+   header("location:../administrador/crud/administraproducto.php");
 }
 
 

@@ -172,7 +172,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
            <form  action="http://localhost/TiendaVirtual/crudservicios/api.php?apicall=updateproducto" method="POST"
            enctype="multipart/form-data" >
           <tr>
-            <td> <input type="hidden" name="ID_Producto"  value="<?php echo $item['ID_Producto']; ?>" </td> 
+            <td>  <?php echo $item['ID_Producto']; ?> </p> 
+            <input type="hidden" name="ID_Producto"  value="<?php echo $item['ID_Producto']; ?>" </td> 
             <td> <input type="text" name="Nombre_Producto"   value="<?php echo $item['Nombre_Producto']; ?>"/></td>
             <td><img src="<?php echo $item['Imagen_Producto']?>" width=100 height=100 alt="foto"/> 
             <input type="file" value name="Imagen_Producto" />

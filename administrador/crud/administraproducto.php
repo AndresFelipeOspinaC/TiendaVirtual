@@ -226,12 +226,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </div>
 
 <section class="crearproductos" id="crear">
-  <form action="http://localhost/tiendaVirtual/crudservicios/api.php?apicall=createproducto" method="POST" enctype="multipart/form-data">
+  <form action="http://localhost/tiendavirtual/crudservicios/api.php?apicall=createproducto" method="POST" enctype="multipart/form-data">
 
       <div class="proingresa1"> Código del Producto </div>
         <div class="resp1">
-        <input type="text" name="ID_Producto" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;
-        VALOR UNICO" />
+        <input type="text" name="ID_Producto">
         </div>
 
       <div class="proingresa1"> Nombre del Producto: </div>
@@ -293,7 +292,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div>
 
             <input type="submit" value="Guardar"class="guardar">
-          
+  </form>
     
   </section>
 
@@ -340,6 +339,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </html>
 <?php
 }else{
-  header("location:../iniciarsesion.html");
+  header("location:../index.html");
 }
 ?>

@@ -250,11 +250,11 @@ $stmt->bindParam(":ID_Producto", $ID_Producto,PDO::PARAM_STR);
 
  public function createProductoModel($datosModel,$tabla){
 
-$IMG="../Fotos/".$datosModel["IMG"];
+$IMG="../fotos/".$datosModel["IMG"];
 
 $stmt = Database::getconectar()->prepare("INSERT into $tabla(ID_Producto,Nombre_Producto,
-Imagen_Producto,Talla,Color,Material Valor,Descripcion,ID_categoria,ID_clasificacion) 
-values (:ID_Producto,:Nombre_Producto,:Imagen_Producto,:Talla,:Color,:Material, Valor,:Descripcion,
+Imagen_Producto,Talla,Color,Material,Valor,Descripcion,ID_categoria,ID_clasificacion) 
+values (:ID_Producto,:Nombre_Producto,:Imagen_Producto,:Talla,:Color,:Material,:Valor,:Descripcion,
 :ID_categoria,:ID_clasificacion)");
 
 $stmt->bindParam(":ID_Producto", $datosModel["ID_Producto"],PDO::PARAM_STR);
@@ -263,7 +263,7 @@ $stmt->bindParam(":ID_Producto", $datosModel["ID_Producto"],PDO::PARAM_STR);
         $stmt->bindParam(":Talla", $datosModel["Talla"],PDO::PARAM_STR);
         $stmt->bindParam(":Color", $datosModel["Color"],PDO::PARAM_STR);
         $stmt->bindParam(":Material", $datosModel["Material"],PDO::PARAM_STR);
-        $stmt->bindParam(" Valor", $datosModel["Valor"],PDO::PARAM_STR);
+        $stmt->bindParam(":Valor", $datosModel["Valor"],PDO::PARAM_STR);
         $stmt->bindParam(":Descripcion", $datosModel["Descripcion"],PDO::PARAM_STR);
         $stmt->bindParam(":ID_categoria", $datosModel["ID_categoria"],PDO::PARAM_STR);
         $stmt->bindParam(":ID_clasificacion", $datosModel["ID_clasificacion"],PDO::PARAM_STR);
@@ -370,12 +370,12 @@ $stmt->bindParam(":ID_Producto", $ID_Producto,PDO::PARAM_STR);
 
  public function updateProductoModel($datosModel,$tabla){
 
-if($datosModel["Imagen_Producto"] == "../administrador/Fotos/".$datosModel["IMG"])
+if($datosModel["Imagen_Producto"] == "../administrador/fotos/".$datosModel["IMG"])
 
  {
 
 
-    $IMG="../Fotos/".$datosModel["IMG"];
+    $IMG="../fotos/".$datosModel["IMG"];
 
 
  }
@@ -417,6 +417,7 @@ $stmt->bindParam(":ID_Producto", $datosModel["ID_Producto"],PDO::PARAM_STR);
 
         if($stmt->execute()){
             return true;
+        
         }else{
             return false;
         } 
