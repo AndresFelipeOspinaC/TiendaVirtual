@@ -197,21 +197,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <a href="editproducto.php?id=<?php echo $item['ID_Producto'] ?>" class="btn btn-secondary">
                 <i class="fas fa-marker"></i>
               </a>
-
               <form action="http://localhost/tiendavirtual/crudservicios/api.php?apicall=deleteproducto" method="post">
-              
 
                 <input type="hidden" name="ID_Producto" value="<?php echo $item["ID_Producto"] ?>">
-                <input type="submit" value="Eliminar" ?>
+                <input type="image" value="Eliminar" alt="submit" src="../../iconos/eliminar.png" width="90%" height="35px" class="btn btn-danger"?>
               
               </form>
-              
-              <a href="http://localhost/tiendavirtual/crudservicios/api.php?apicall=deleteproducto?ID_Producto=<?php echo $item["ID_Producto"]?>" class="btn btn-danger">
 
-
-              
-          
-                <i class="far fa-trash-alt"></i>
               </a>
             </td>
           </tr>
