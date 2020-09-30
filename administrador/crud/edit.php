@@ -180,62 +180,99 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <tbody>
           <?php
 
+          require_once("../../crudservicios/modelojson.php");
+
          $id = $_GET["id"];
 
-         
+         $usuario = new Datos();
 
-$conectar = mysqli_connect("localhost","root","","trapitos");
-
-$query ="SELECT ID_Usuario, Primer_Nombre, Segundo_Nombre, Primer_Apellido, Segundo_Apellido, fecha_nacimiento, Telefono, Correo, Nombre_Genero, Nombre_Ciudad, direccion, observaciones FROM usuario
-          join genero on genero.ID_Genero = usuario.ID_Genero
-          join ciudad on ciudad.ID_Ciudad = usuario.ID_Ciudad
-          where ID_Usuario = '$id'
-        ";
-
-$result_tasks = mysqli_query($conectar,$query);  
-
-
-while($row = mysqli_fetch_array($result_tasks)) { 
+         $mostrarUsuario = $usuario->readUsuarioAdminModel($id,"usuario");
+           
+         if($mostrarUsuario){
+           
+          foreach($mostrarUsuario as $row => $item) {
            
            ?>
           <table>
-          <form action="editactualizado.php?id=<?php echo $row['ID_Usuario'] ?>" method="POST">
+          <form action="http://localhost/tiendavirtual/crudservicios/api.php?apicall=updateadminusuario" method="POST">
           <tr>
-            <td> <input type="text" name="numero" value="<?php echo $row['ID_Usuario'];?>"/> </td>
-            <td> <input type="text" name="nombre1" value="<?php echo $row['Primer_Nombre'];?>"/> </td>
-            <td> <input type="text" name="nombre2" value="<?php echo $row['Segundo_Nombre'];?>"/></td>
-            <td> <input type="text" name="apellido1" value="<?php echo $row['Primer_Apellido'];?>"/></td>
-            <td> <input type="text"  name="apellido2" value="<?php echo $row['Segundo_Apellido'];?>"/></td>
-            <td> <input type="text" name="fnaci" placeholder="año/mes/dia" value="<?php echo $row['fecha_nacimiento'];?>"/></td>
-            <td> <input type="text" name="telefono" placeholder="Escriba  Número Teléfonico" value="<?php echo $row['Telefono'];?>"/></td>
-            <td> <input type="email" name="correo" placeholder="Escribe Correo " value="<?php echo $row['Correo'];?>"/></td>
-            <td > <select name="genero">
-            <option>  <?php  echo $row['Nombre_Genero']; ?>  </option>
-            <option> 
-            <?php $genero = "SELECT Nombre_Genero from genero where Nombre_Genero <>'$row[Nombre_Genero]'";
-$consgen = mysqli_query($conectar,$genero);
-$datosgen = mysqli_fetch_array($consgen);
-echo $datosgen["Nombre_Genero"];
-?> </option>
+      
+            <td> <input type="hidden" name="ID_Usuario" value="<?php echo $item['ID_Usuario'];?>"/> </td>
+            <td> <input type="text" name="Primer_Nombre" value="<?php echo $item['Primer_Nombre'];?>"/> </td>
+            <td> <input type="text" name="Segundo_Nombre" value="<?php echo $item['Segundo_Nombre'];?>"/></td>
+            <td> <input type="text" name="Primer_Apellido" value="<?php echo $item['Primer_Apellido'];?>"/></td>
+            <td> <input type="text"  name="Segundo_Apellido" value="<?php echo $item['Segundo_Apellido'];?>"/></td>
+            <td> <input type="text" name="fecha_nacimiento" placeholder="año/mes/dia" value="<?php echo $item['fecha_nacimiento'];?>"/></td>
+            <td> <input type="text" name="Telefono" placeholder="Escriba  Número Teléfonico" value="<?php echo $item['Telefono'];?>"/></td>
+            <td> <input type="email" name="Correo" placeholder="Escribe Correo " value="<?php echo $item['Correo'];?>"/></td>
+            <td > <select name="ID_Genero">
+            <option>  <?php  echo $item['Nombre_Genero']; ?>  </option>
+      <?php
+
+      $genero = new Datos();
+
+      $mostrarGenero = $genero->todoGeneroModel($item['Nombre_Genero'],"genero");
+
+      if($mostrarGenero) {
+
+    foreach($mostrarGenero as $rowgen => $itemgen){
+?>
+           
+<option> <?php  echo $itemgen["Nombre_Genero"]; }}  ?>  </option>
 </select>
  </td>
             <td>
-            <select name="ciudad"> 
-<option><?php echo $row["Nombre_Ciudad"] ;  ?> </option>
-<option> <?php $ciudad = "SELECT Nombre_Ciudad from ciudad where Nombre_Ciudad ='Cali'";
-$consciu = mysqli_query($conectar,$ciudad);
-$datosciu = mysqli_fetch_array($consciu);
-echo $datosciu["Nombre_Ciudad"];
-?> </option>
-<option> <?php $ciudad = "SELECT Nombre_Ciudad from ciudad where Nombre_Ciudad ='Medellín'";
-$consciu = mysqli_query($conectar,$ciudad);
-$datosciu = mysqli_fetch_array($consciu);
-echo $datosciu["Nombre_Ciudad"];
-?> </option>
+            <select name="ID_Ciudad"> 
+<option><?php echo $item["Nombre_Ciudad"] ;  ?> </option>
+ <?php
+$cali = new Datos();
+
+$mostrarCali = $cali->mostrarCiudades("Cali","ciudad");
+
+if($mostrarCali ) {
+
+  foreach($mostrarCali as $rowCali => $itemCali){
+?>
+<option> <?php echo $itemCali["Nombre_Ciudad"]; }}    ?>  </option>
+
+<?php
+
+
+$Medellin = new Datos();
+
+$mostrarMedellin = $Medellin->mostrarCiudades("Medellín","ciudad");
+
+if($mostrarMedellin) {
+
+  foreach($mostrarMedellin as $rowMedellin => $itemMedellin){
+?>
+<option> <?php echo $itemMedellin["Nombre_Ciudad"]; }}    ?>  </option>
+
+
+<?php
+
+
+$Bogota = new Datos();
+
+$mostrarBogota = $Bogota->mostrarCiudades("Bogotá","ciudad");
+
+if($mostrarBogota) {
+
+  foreach($mostrarBogota as $rowBogota => $itemBogota){
+?>
+<option> <?php echo $itemBogota["Nombre_Ciudad"]; }}    ?>  </option>
+
+
+
+
+
+
+
+
 </select>
           </td>
-            <td><input type="text" name="direccion" placeholder="Escriba Dirección" value="<?php echo $row['direccion'];?>"/></td>
-            <td><input type="text" name="observaciones" placeholder="Escriba Observaciones" value="<?php echo $row['observaciones'];?>"/></td>
+            <td><input type="text" name="direccion" placeholder="Escriba Dirección" value="<?php echo $item['direccion'];?>"/></td>
+            <td><input type="text" name="observaciones" placeholder="Escriba Observaciones" value="<?php echo $item['observaciones'];?>"/></td>
             <td>
               <input type="submit" value="Actualizar Datos"  class="btn btn-secondary" class="botones"/>
                 
@@ -245,7 +282,7 @@ echo $datosciu["Nombre_Ciudad"];
             </td>
           </tr>
 </form>
-<?php } ?>
+<?php }} ?>
         </tbody>
       </table>
     </div>

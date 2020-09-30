@@ -44,8 +44,30 @@ class Controllerjson{
     return $respuesta;
     }
 
-    public function deleteUsuarioController($ID_Usuario){
-        $respuesta = Datos::deleteUsuarioModel($ID_Usuario, "usuario");
+   public function updateUsuarioAdminiController($ID_Usuario,$Primer_Nombre,$Segundo_Nombre,$Primer_Apellido,
+   $Segundo_Apellido,$fecha_nacimiento,$Telefono,$Correo,$ID_Genero,$ID_Ciudad,$direccion,$observaciones)
+   {
+
+    $datosController = array("ID_Usuario"=>$ID_Usuario,
+    "Primer_Nombre"=>$Primer_Nombre,"Segundo_Nombre" =>$Segundo_Nombre,
+    "Primer_Apellido" =>$Primer_Apellido,"Segundo_Apellido"=>$Segundo_Apellido,
+    "fecha_nacimiento" =>$fecha_nacimiento,"Telefono" =>$Telefono,"Correo"=>$Correo,
+    "ID_Genero"=>$ID_Genero,"ID_Ciudad" =>$ID_Ciudad,"direccion" =>$direccion,"observaciones"=>$observaciones);
+    $respuesta= Datos::updateUsuarioAdminModel($datosController,"usuario");
+    return $respuesta;
+
+
+
+
+   }
+
+
+
+
+
+
+    public function deleteUsuarioController($ID_Usuario,$ID_Tipo_Documento){
+        $respuesta = Datos::deleteUsuarioModel($ID_Usuario,$ID_Tipo_Documento, "usuario");
         return $respuesta;
     }
 

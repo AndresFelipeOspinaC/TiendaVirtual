@@ -33,7 +33,7 @@ if(isset($_GET['apicall'])){
     switch($_GET['apicall']){
         case 'createusuario':
 
-            ParametrosDisponibles(array('ID_Tipo_Documento', 'ID_Usuario', 'Primer_Nombre', 'Segundo_Nombre', 'Primer_Apellido', 'Segundo_Apellido', 'fecha_nacimiento', 'Telefono', 'Correo', 'Contrasena', 'confirmar_Contrasena', 'ID_Genero', 'ID_Ciudad', 'direccion', 'observaciones', 'ID_Rol'));
+            ParametrosDisponibles(array('ID_Tipo_Documento', 'ID_Usuario', 'Primer_Nombre', 'Primer_Apellido',  'fecha_nacimiento', 'Telefono', 'Correo', 'Contrasena', 'confirmar_Contrasena', 'ID_Genero', 'ID_Ciudad', 'direccion', 'ID_Rol'));
             if($_POST["ID_Tipo_Documento"]=="" || $_POST["ID_Usuario"]=="" ||  
 
             $_POST["Primer_Nombre"]=="" ||  $_POST["Primer_Apellido"]=="" || $_POST["fecha_nacimiento"]=="" ||  
@@ -138,6 +138,7 @@ if(isset($_GET['apicall'])){
         if($result){
             $respuesta['error'] = false;
             $respuesta['mensaje'] = 'Usuario agregado correctamente';
+            
         }else{
             $respuesta['error'] = true;
             $respuesta['mensaje'] = 'Ocurrio un error intenta nuevamente';
@@ -175,8 +176,8 @@ if(isset($_GET['apicall'])){
     break;
 
     case 'updateusuario':
- ParametrosDisponibles(array('ID_Tipo_Documento','ID_Usuario','Primer_Nombre', 'Segundo_Nombre', 
- 'Primer_Apellido', 'Segundo_Apellido','fecha_nacimiento', 'Telefono', 'Correo', 
+ ParametrosDisponibles(array('ID_Tipo_Documento','ID_Usuario','Primer_Nombre', 
+ 'Primer_Apellido','fecha_nacimiento', 'Telefono', 'Correo', 
  'Contrasena','ID_Genero', 'ID_Ciudad', 'direccion', 'observaciones'));
 
  
@@ -265,6 +266,88 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
     break;
 
 
+    case 'updateadminusuario':
+        ParametrosDisponibles(array('ID_Usuario','Primer_Nombre', 
+        'Primer_Apellido','fecha_nacimiento', 'Telefono', 'Correo', 
+        'ID_Genero', 'ID_Ciudad', 'direccion', 'observaciones'));
+       
+        
+       
+       
+       if( 
+       ($_POST["ID_Usuario"]=="" || $_POST["ID_Usuario"]== null ) ||
+       ($_POST["Primer_Nombre"]=="" || $_POST["Primer_Nombre"]== null ) || ($_POST["Primer_Apellido"]==""
+       || $_POST["Primer_Apellido"]==null ) || ($_POST["fecha_nacimiento"]=="" || 
+       $_POST["fecha_nacimiento"]== null ) ||($_POST["Telefono"]=="" ||  $_POST["Telefono"]==null ) 
+       || ($_POST["Correo"]=="" || $_POST["Correo"]== null)  ||   ($_POST["ID_Genero"]=="" || 
+       $_POST["ID_Genero"]==null ) 
+       ||($_POST["ID_Ciudad"]=="" || $_POST["ID_Ciudad"]== null  ) || 
+         ($_POST["direccion"]=="" || $_POST["direccion"]== null ))
+               {
+                   echo " <h3> Hay Datos Vaciós Por Favor Llenarlos </h3>
+                   <a href='usuarioactualizar.php'> Volver a Actualizar Datos </a>
+                   <a href='menuusuario.php'> Ir a Menú Usuario </a>";   
+               }
+               else {
+       
+        
+            
+               $ID_Usuario= $_POST["ID_Usuario"];
+               
+               $ID_Genero = $_POST["ID_Genero"];
+           
+               if($ID_Genero == "Masculino"){
+                   $ID_Genero = "GEN01";
+               }
+               elseif($ID_Genero == "Femenino"){
+                   $ID_Genero= "GEN02";
+               }
+               else{
+                   $ID_Genero = "";
+               };
+               $ID_Ciudad=$_POST["ID_Ciudad"];
+               switch($_POST["ID_Ciudad"]){
+                   case "Bogotá":$ID_Ciudad="CIU008";
+                   break;
+               
+                   case "Cali":$ID_Ciudad="CIU012";
+                   break;
+                   
+                   case "Medellín":$ID_Ciudad="CIU039";
+                   break;   
+                   };
+               $Primer_Nombre=$_POST["Primer_Nombre"];
+               $Segundo_Nombre=$_POST["Segundo_Nombre"];
+               $Primer_Apellido=$_POST["Primer_Apellido"];
+               $Segundo_Apellido=$_POST["Segundo_Apellido"];
+               $fecha_nacimiento=$_POST["fecha_nacimiento"];
+               $Telefono=$_POST["Telefono"];
+               $Correo=$_POST["Correo"];
+               $direccion=$_POST["direccion"];
+               $observaciones=$_POST["observaciones"];
+       
+               $db = new Controllerjson();
+               $result = $db->updateUsuarioAdminiController($ID_Usuario,$Primer_Nombre,$Segundo_Nombre,$Primer_Apellido,$Segundo_Apellido,$fecha_nacimiento,$Telefono,$Correo,$ID_Genero,$ID_Ciudad,$direccion,$observaciones);
+       
+               }
+               
+           break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     case 'mostrarcontrasena':
         ParametrosDisponibles(array('Correo','ID_Usuario'));
         $db = new Controllerjson();
@@ -280,16 +363,16 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
 
 
     case 'deleteusuario':
-        ParametrosDisponibles(array('ID_Usuario'));
+        ParametrosDisponibles(array('ID_Usuario','ID_Tipo_Documento'));
         $db = new Controllerjson();
-        $result = $db->deleteUsuarioController($_POST['ID_Usuario']);
+        $result = $db->deleteUsuarioController($_POST['ID_Usuario'], $_POST['ID_Tipo_Documento']);
         
         if(!$result){
             $respuesta['error'] = false;
-            $respuesta['mensaje'] = 'Usuario No Existe';
+            $respuesta['mensaje'] = 'Usuario Eliminado';
         }else{
             $respuesta['error'] = true;
-            $respuesta['mensaje'] = 'Usuario Eliminado';
+            $respuesta['mensaje'] = 'Usuario no Existe';
         }
     break;
 
@@ -509,11 +592,11 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
 
  if(!$result){
     $respuesta['error'] = false;
-    $respuesta['mensaje'] = 'Producto No Actualiza';
+    $respuesta['mensaje'] = 'Producto No Existe';
     header("location:../administrador/crud/administraproducto.php");
 }else{
     $respuesta['error'] = true;
-    $respuesta['mensaje'] = 'Producto Actualizado';
+    $respuesta['mensaje'] = 'Producto Eliminado';
    header("location:../administrador/crud/administraproducto.php");
 }
 

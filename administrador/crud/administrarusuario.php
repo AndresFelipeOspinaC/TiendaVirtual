@@ -178,40 +178,54 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </thead>
             <tbody>
               <?php
-              $conectar = mysqli_connect("localhost","root","","trapitos");
+              
+              require_once("../../crudservicios/modelojson.php");
+             
+              $usuarios = new Datos();
 
-              $query ="SELECT ID_Usuario, Primer_Nombre, Segundo_Nombre, Primer_Apellido, Segundo_Apellido, fecha_nacimiento, Telefono, Correo, Nombre_Genero, Nombre_Ciudad, direccion, observaciones FROM usuario
-              join genero on genero.ID_Genero = usuario.ID_Genero
-              join ciudad on ciudad.ID_Ciudad = usuario.ID_Ciudad
-              ";
-              $result_tasks = mysqli_query($conectar,$query);    
+              $mostrarUsuarios = $usuarios->readUsuariosModel();
 
-              while($row = mysqli_fetch_assoc($result_tasks)) { ?>
+
+              if($mostrarUsuarios){
+
+                foreach($mostrarUsuarios as $row => $item) {
+
+               ?>
               <tr>
-                <td name="num"><?php echo $row['ID_Usuario']; ?></td>
-                <td><?php echo $row['Primer_Nombre']; ?></td>
-                <td><?php echo $row['Segundo_Nombre']; ?></td>
-                <td><?php echo $row['Primer_Apellido']; ?></td>
-                <td><?php echo $row['Segundo_Apellido']; ?></td>
-                <td><?php echo $row['fecha_nacimiento']; ?></td>
-                <td><?php echo $row['Telefono']; ?></td>
-                <td><?php echo $row['Correo']; ?></td>
-                <td><?php echo $row['Nombre_Genero']; ?></td>
-                <td><?php echo $row['Nombre_Ciudad']; ?></td>
-                <td><?php echo $row['direccion']; ?></td>
-                <td><?php echo $row['observaciones']; ?></td>
+                <td name="num"><?php echo $item['ID_Usuario']; ?></td>
+                <td><?php echo $item['Primer_Nombre']; ?></td>
+                <td><?php echo $item['Segundo_Nombre']; ?></td>
+                <td><?php echo $item['Primer_Apellido']; ?></td>
+                <td><?php echo $item['Segundo_Apellido']; ?></td>
+                <td><?php echo $item['fecha_nacimiento']; ?></td>
+                <td><?php echo $item['Telefono']; ?></td>
+                <td><?php echo $item['Correo']; ?></td>
+                <td><?php echo $item['Nombre_Genero']; ?></td>
+                <td><?php echo $item['Nombre_Ciudad']; ?></td>
+                <td><?php echo $item['direccion']; ?></td>
+                <td><?php echo $item['observaciones']; ?></td>
                 <td>
-                  <a href="edit.php?id=<?php echo $row['ID_Usuario'] ?>" class="btn btn-secondary"  >
+                
+                  
+                  <a href="edit.php?id=<?php echo $item['ID_Usuario'] ?>" class="btn btn-secondary"  >
                     <i class="fas fa-marker"></i>
                   </a>
-                  <a href="delete.php?id=<?php echo $row['ID_Usuario']?>" class="btn btn-danger">
+                  
+                  <a href="delete.php?id=<?php echo $item['ID_Usuario']?>" class="btn btn-danger">
                     <i class="far fa-trash-alt"></i>
                   </a>
+
+                  <form action="http://localhost/tiendavirtual/crudservicios/api.php?apicall=deleteusuario" method="post">
+                    <input type="hidden" name="ID_Tipo_Documento" value="<?php echo $item["ID_Tipo_Documento"];?>">
+                    <input type="hidden" name="ID_Usuario" value="<?php echo $item["ID_Usuario"]?>">
+                  <input type="submit" value="Eliminar" ?>
+                
+                  </form>
                   
                 </td>
               </tr>
               
-              <?php } ?>
+              <?php } }?>
             </tbody>
           </table>
         </div>

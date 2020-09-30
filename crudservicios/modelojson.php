@@ -44,10 +44,12 @@ class Datos extends Database{
         join rol on rol.ID_Rol = $tabla.ID_Rol
         where Correo = :Correo");
 
+  
+
 $stmt->bindParam(":Correo", $Correo,PDO::PARAM_STR);
         $stmt->execute();
 
-        $stmt->bindParam(":nombre", $nombre,PDO::PARAM_STR);
+        $stmt->bindParam(":Nombre", $Nombre,PDO::PARAM_STR);
         $stmt->bindParam(":ID_Usuario", $ID_Usuario,PDO::PARAM_STR);
         $stmt->bindParam(":Primer_Nombre", $Primer_Nombre,PDO::PARAM_STR);
         $stmt->bindParam(":Segundo_Nombre", $Segundo_Nombre,PDO::PARAM_STR);
@@ -71,6 +73,87 @@ $stmt->bindParam(":Correo", $Correo,PDO::PARAM_STR);
 
 
   }
+
+  public function readUsuariosModel(){
+    $stmt = Database::getconectar()->prepare("SELECT ID_Tipo_Documento,ID_Usuario, Primer_Nombre, Segundo_Nombre, Primer_Apellido, 
+    Segundo_Apellido,fecha_nacimiento, Telefono, Correo, Nombre_Genero, Nombre_Ciudad, direccion, observaciones 
+    FROM usuario
+    join genero on genero.ID_Genero = usuario.ID_Genero
+    join ciudad on ciudad.ID_Ciudad = usuario.ID_Ciudad");
+
+
+$stmt->execute();
+
+
+$stmt->bindParam(":ID_Usuario", $ID_Usuario,PDO::PARAM_STR);
+$stmt->bindParam(":Primer_Nombre", $Primer_Nombre,PDO::PARAM_STR);
+$stmt->bindParam(":Segundo_Nombre", $Segundo_Nombre,PDO::PARAM_STR);
+$stmt->bindParam(":Primer_Apellido", $Primer_Apellido,PDO::PARAM_STR);
+$stmt->bindParam(":Segundo_Apellido", $Segundo_Apellido,PDO::PARAM_STR);
+$stmt->bindParam(":fecha_nacimiento", $fecha_nacimiento,PDO::PARAM_STR);
+$stmt->bindParam(":Telefono", $Telefono,PDO::PARAM_STR);
+$stmt->bindParam(":Correo", $Correo,PDO::PARAM_STR);
+$stmt->bindParam(":Nombre_Genero", $Nombre_Genero,PDO::PARAM_STR);
+$stmt->bindParam(":Nombre_Ciudad", $Nombre_Ciudad,PDO::PARAM_STR);
+$stmt->bindParam(":direccion", $direccion,PDO::PARAM_STR);
+$stmt->bindParam(":observaciones", $observaciones,PDO::PARAM_STR);
+
+
+
+return  $stmt->fetchAll();
+
+
+
+
+}
+
+
+public function readUsuarioAdminModel($ID_Usuario,$tabla){
+    $stmt = Database::getconectar()->prepare("SELECT ID_Tipo_Documento,ID_Usuario,Nombre_Genero,Nombre_Ciudad,
+    Primer_Nombre,Segundo_Nombre,Primer_Apellido,Segundo_Apellido,fecha_nacimiento,Telefono,
+    Correo,direccion,observaciones from $tabla
+    
+    join genero on genero.ID_Genero = $tabla.ID_Genero
+    join ciudad on ciudad.ID_Ciudad =$tabla.ID_Ciudad
+    
+    where ID_Usuario = :ID_Usuario");
+
+
+
+$stmt->bindParam(":ID_Usuario", $ID_Usuario,PDO::PARAM_STR);
+    $stmt->execute();
+
+    $stmt->bindParam(":ID_Usuario", $ID_Usuario,PDO::PARAM_STR);
+    $stmt->bindParam(":Primer_Nombre", $Primer_Nombre,PDO::PARAM_STR);
+    $stmt->bindParam(":Segundo_Nombre", $Segundo_Nombre,PDO::PARAM_STR);
+    $stmt->bindParam(":Primer_Apellido", $Primer_Apellido,PDO::PARAM_STR);
+    $stmt->bindParam(":Segundo_Apellido", $Segundo_Apellido,PDO::PARAM_STR);
+    $stmt->bindParam(":fecha_nacimiento", $fecha_nacimiento,PDO::PARAM_STR);
+    $stmt->bindParam(":Telefono", $Telefono,PDO::PARAM_STR);
+    $stmt->bindParam(":Correo", $Correo,PDO::PARAM_STR);
+    $stmt->bindParam(":Nombre_Genero", $Nombre_Genero,PDO::PARAM_STR);
+    $stmt->bindParam(":Nombre_Ciudad", $Nombre_Ciudad,PDO::PARAM_STR);
+    $stmt->bindParam(":direccion", $direccion,PDO::PARAM_STR);
+    $stmt->bindParam(":observaciones", $observaciones,PDO::PARAM_STR);
+    
+
+return  $stmt->fetchAll();
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
      public function updateUsuarioModel($datosModel,$tabla){
         $stmt = Database::getconectar()->prepare("UPDATE $tabla set ID_Genero=:ID_Genero,
@@ -102,10 +185,63 @@ where ID_Tipo_Documento= :ID_Tipo_Documento and ID_Usuario = :ID_Usuario");
         }
     }
 
-    public function deleteUsuarioModel($id, $tabla){
-        $stmt = Database::getconectar()->prepare("DELETE FROM $tabla WHERE ID_Usuario=:ID_Usuario");
+     public function updateUsuarioAdminModel($datosModel,$tabla){
 
-        $stmt->bindParam(":ID_Usuario",$ID_Usuario, PDO::PARAM_INT);
+
+        $stmt = Database::getconectar()->prepare("UPDATE $tabla set ID_Genero=:ID_Genero,
+        ID_Ciudad=:ID_Ciudad,Primer_Nombre=:Primer_Nombre,Segundo_Nombre=:Segundo_Nombre,
+        Primer_Apellido=:Primer_Apellido,Segundo_Apellido=:Segundo_Apellido,fecha_nacimiento=:fecha_nacimiento,
+        Telefono=:Telefono,Correo=:Correo,
+        direccion=:direccion,observaciones=:observaciones
+        where ID_Usuario = :ID_Usuario");
+
+
+$stmt->bindParam(":ID_Usuario", $datosModel["ID_Usuario"],PDO::PARAM_STR);
+$stmt->bindParam(":Primer_Nombre", $datosModel["Primer_Nombre"],PDO::PARAM_STR);
+$stmt->bindParam(":Segundo_Nombre", $datosModel["Segundo_Nombre"],PDO::PARAM_STR);
+$stmt->bindParam(":Primer_Apellido", $datosModel["Primer_Apellido"],PDO::PARAM_STR);
+$stmt->bindParam(":Segundo_Apellido", $datosModel["Segundo_Apellido"],PDO::PARAM_STR);
+$stmt->bindParam(":fecha_nacimiento", $datosModel["fecha_nacimiento"],PDO::PARAM_STR);
+$stmt->bindParam(":Telefono", $datosModel["Telefono"],PDO::PARAM_STR);
+$stmt->bindParam(":Correo", $datosModel["Correo"],PDO::PARAM_STR);
+$stmt->bindParam(":ID_Genero", $datosModel["ID_Genero"],PDO::PARAM_STR);
+$stmt->bindParam(":ID_Ciudad", $datosModel["ID_Ciudad"],PDO::PARAM_STR);
+$stmt->bindParam(":direccion", $datosModel["direccion"],PDO::PARAM_STR);
+$stmt->bindParam(":observaciones", $datosModel["observaciones"],PDO::PARAM_STR);
+if($stmt->execute()){
+    echo "Actualizacion Exitosa";
+}else{
+    echo "No se pudo hacer la Actualizacion";
+}
+
+
+
+
+
+
+
+
+
+
+
+     }
+
+
+
+
+
+
+
+
+
+
+    public function deleteUsuarioModel($ID_Usuario,$ID_Tipo_Documento, $tabla){
+        $stmt = Database::getconectar()->prepare("DELETE FROM $tabla WHERE ID_Usuario=:ID_Usuario and ID_Tipo_Documento
+        = :ID_Tipo_Documento");
+
+        $stmt->bindParam(":ID_Usuario",$ID_Usuario, PDO::PARAM_STR);
+        $stmt->bindParam(":ID_Tipo_Documento",$ID_Tipo_Documento, PDO::PARAM_STR);
+
         $stmt->execute();
     }
 
@@ -210,7 +346,7 @@ return $stmt->fetchAll();
  public function mostrarCiudades($Nombre_Ciudad,$tabla){
 
     $stmt = Database::getconectar()->prepare("SELECT Nombre_Ciudad from $tabla
-    where Nombre_Ciudad =:Nombre_Ciudad");
+    where Nombre_Ciudad = :Nombre_Ciudad");
 
 $stmt->bindParam(":Nombre_Ciudad",$Nombre_Ciudad,PDO::PARAM_STR);
 
