@@ -38,36 +38,26 @@
     </header>
 
   <body> <!-- papa de todos -->
- 
-    <?php
-$conectar = mysqli_connect("localhost","root","","trapitos");
-
-$consulta = "SELECT * FROM producto";
-
-$insertar= mysqli_query($conectar,$consulta);
-echo "<h3> Datos Actualizados </h3>";
-
-
-while($chaqueta1=mysqli_fetch_assoc($insertar)){
-
-?>
-<center>
-      <div class="card1" style="width: 18rem;">
-        <img class="card-img-top" src="../administrador/crud/<?php echo "$chaqueta1[Imagen_Producto]" ?>"  alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title"><?php echo "$chaqueta1[Nombre_Producto]"?> </h5>
-          <p class="card-text"> <?php echo "$chaqueta1[precio]"?></p>
-          <a href="Producto1index.php?id=<?php echo $chaqueta1['ID_Producto'] ;?>" class="btn btn-primary">Ver más detalles</a>
-        </div>
-      </div>
-      
-</center>
 
 <?php
+require("../crudservicios/modelojson.php");
+$objeto = new Datos();
+
+$mostrarobj = $objeto->mostrarProductos();
+
+if($mostrarobj){
+    foreach($mostrarobj as $fila=>$campo){
+        ?>
+
+            <div><img src="../administrador<?php echo $campo['Imagen_Producto']?>" width=100 height=100 alt="foto"/></div>
+            <div><?php echo $campo['Nombre_Producto']; ?></div>
+            <div><?php echo $campo['Valor']; ?></div>
+
+
+        <?php
+    }
 }
 ?>
-
-
 
 
 <footer id="contacto">

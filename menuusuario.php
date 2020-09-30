@@ -57,9 +57,7 @@ if(isset($_SESSION["usuario"])){
         <p class="after">Conoce lo que tenemos que ofrecerte.</p>
         <img src="iconos/moda.png" alt=""width="4%" height="4%">
         <a href="Producto/Producto_index.php" >TODA LA ROPA</a>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <img src="iconos/ceramica.png" alt=""width="4%" height="4%">
-        <a href="Otros-productos.html" >TODAS LAS PORCELANAS</a>
+
     </div>
 
         <! --Seccion de nuestros trabajo (productos)-->

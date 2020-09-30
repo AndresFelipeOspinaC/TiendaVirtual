@@ -371,9 +371,9 @@ return $stmt->fetchAll();
 
 $stmt->execute();
 
-$stmt->bindParam(":ID_Producto", $ID_Producto,PDO::PARAM_STR);
+        $stmt->bindParam(":ID_Producto", $ID_Producto,PDO::PARAM_STR);
         $stmt->bindParam(":Nombre_Producto", $Nombre_Producto,PDO::PARAM_STR);
-        $stmt->bindParam(":Imagen_Producto", $Imagen_Producto,PDO::PARAM_STR);
+        $stmt->bindParam(":Imagen_Producto", $Imagen_Producto,PDO::PARAM_LOB);
         $stmt->bindParam(":Talla", $Talla,PDO::PARAM_STR);
         $stmt->bindParam(":Color", $Color,PDO::PARAM_STR);
         $stmt->bindParam(":Material", $Material,PDO::PARAM_STR);
