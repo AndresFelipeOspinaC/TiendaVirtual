@@ -35,34 +35,40 @@
         </div>
     </header>
 
-    <div class="rescon">
+    <div class="recuperar" id="recuperar">
 
         <form action="http://localhost/tiendavirtual/crudservicios/api.php?apicall=mostrarcontrasena" method="POST"> 
-            <h1>  Reestablecer Contraseña </h1>
-            <p> Correo Electronico: </p> <input type="email" name="Correo"/>
-            <p> Numero de Identificacion: </p> <input type="text" name="ID_Usuario"/><br><br>
-            <input type="submit" value="Reestablecer Contraseña"class="guardar"/>
+            <h2>  Reestablecer Contraseña </h2><br>
+
+            <div class="form"> Correo Electronico: </div> 
+                <div class="resp">
+                    <input type="email" name="Correo"/>
+                </div>
+            <div class="form"> Numero de Identificacion: </div> 
+            <div class="resp">
+                <input type="text" name="ID_Usuario"/><br> 
+            </div>
+            <input type="submit" value="Ver Contraseña"class="guardar">
         </form>
     </div>
 
     
     <! --Seccion de contacto (footer)-->
     <footer id="contacto">
-        <div class="footer contenedor">
-            <div class="marca-logo">
-                <img src="iconos/logomt.PNG" alt="">
-            </div>
-            <div class="iconos">
-                <img src="iconos/instagram.png" alt="facebook" width="3%" height="3%">
-                <img src="iconos/whatsapp.png" alt="facebook" width="3%" height="3%">
-                <img src="iconos/facebook (1).png" alt="facebook" width="3%" height="3%"> 
-                <img src="iconos/youtube.png" alt="facebook" width="3%" height="3%">
-                <img src="iconos/github.png" alt="facebook" width="3%" height="3%">
-    
-            </div>
-            <p>La pacion e innovacion es lo que nos distingue del resto</p>
+    <div class="footer contenedor">
+        <div class="marca-logo">
+            <img src="iconos/logomt.PNG" alt="">
         </div>
-    </footer>
+        <div class="iconos">
+            <img src="iconos/instagram.png" alt="facebook" width="3%" height="3%">
+            <img src="iconos/whatsapp.png" alt="facebook" width="3%" height="3%">
+            <img src="iconos/facebook (1).png" alt="facebook" width="3%" height="3%"> 
+            <img src="iconos/youtube.png" alt="facebook" width="3%" height="3%">
+            <img src="iconos/github.png" alt="facebook" width="3%" height="3%">
+        </div><br><br><br>
+        <p>La pacion e innovacion es lo que nos distingue del resto</p>
+    </div>
+</footer>
     <script src="js/jquery.js"></script>
     <script src="js/main.js"></script>
     <script src="js/filtro.js"></script>
