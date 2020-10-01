@@ -13,7 +13,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Administrador MT</title>
   <link rel="icon" href="../../iconos/logomt.PNG"width="100%" height="100%"/>
-
+  <link href="../../estiloscss/estiloadminpanel.css"rel="StyleSheet">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
@@ -141,9 +141,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">pagina pricipal</h1>
-          </div>
+            
+          <header>
+        <div class="textos">
+            <h1>Mis Trapitos - Administrador</h1>
+            <h2>Tienda de Ropa Online</h2>
+        </div>
+    </header>
+
+
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Mis Trapitos</a></li>
@@ -157,6 +163,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </div>
 </div>
 </div>
+
 
 
   <footer class="main-footer">

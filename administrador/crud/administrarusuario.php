@@ -12,6 +12,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Administrador MT</title>
+  <link rel="icon" href="../../iconos/logomt.PNG"width="100%" height="100%"/>
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
@@ -210,15 +211,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <a href="edit.php?id=<?php echo $item['ID_Usuario'] ?>" class="btn btn-secondary"  >
                     <i class="fas fa-marker"></i>
                   </a>
-                  
-                  <a href="delete.php?id=<?php echo $item['ID_Usuario']?>" class="btn btn-danger">
-                    <i class="far fa-trash-alt"></i>
-                  </a>
 
                   <form action="http://localhost/tiendavirtual/crudservicios/api.php?apicall=deleteusuario" method="post">
                     <input type="hidden" name="ID_Tipo_Documento" value="<?php echo $item["ID_Tipo_Documento"];?>">
                     <input type="hidden" name="ID_Usuario" value="<?php echo $item["ID_Usuario"]?>">
-                  <input type="submit" value="Eliminar" ?>
+                  <input type="image" value="Eliminar" alt="submit" src="../../iconos/eliminar.png" width="90%" height="35px" class="btn btn-danger"?>
                 
                   </form>
                   

@@ -16,6 +16,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+
+  
+  <link href="../../estiloscss/estiloeditarproducto.css"rel="StyleSheet">
+
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <link href="admin.css"rel="StyleSheet">
@@ -140,21 +144,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </div>
     <div class="col-md-8">
       <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>ID_Producto </th>
-            <th>Nombre_Producto</th>
-            <th>Imagen_Producto</th>
-            <th>Talla</th>
-            <th>Color</th>
-            <th>Material</th>
-            <th>Valor</th>
-            <th>Categoria</th>
-            <th>Clasificacion</th>
-            <th>Descripcion</th>
-            <th>Acción</th>
-          </tr>
-        </thead>
+
         <tbody>
           <?php
           require_once("../../crudservicios/modelojson.php");
@@ -169,43 +159,76 @@ scratch. This page gets rid of all links and provides the needed markup only.
           
           {
           ?>
+
+      <section class="crearproductos" id="crear">
+
            <form  action="http://localhost/TiendaVirtual/crudservicios/api.php?apicall=updateproducto" method="POST"
            enctype="multipart/form-data" >
-          <tr>
-            <td>  <?php echo $item['ID_Producto']; ?> </p> 
-            <input type="hidden" name="ID_Producto"  value="<?php echo $item['ID_Producto']; ?>" </td> 
-            <td> <input type="text" name="Nombre_Producto"   value="<?php echo $item['Nombre_Producto']; ?>"/></td>
-            <td><img src="<?php echo $item['Imagen_Producto']?>" width=100 height=100 alt="foto"/> 
+          
+           <div class="proingresa1"> Código del Producto </div>
+           <div class="resp1">  <?php echo $item['ID_Producto']; ?> </div>
+           <input type="hidden" name="ID_Producto"  value="<?php echo $item['ID_Producto']; ?>" > 
+
+
+           <div class="proingresa1"> Nombre del Producto: </div>
+           <div class="resp1"> 
+             <input type="text" name="Nombre_Producto"   value="<?php echo $item['Nombre_Producto']; ?>"/> 
+            </div> 
+
+            
+             <div class="proingresa1"> Imagen del Producto: </div>
+             <div class="resp1">
+            <img src="<?php echo $item['Imagen_Producto']?>" width=100 height=100 alt="foto"/> 
             <input type="file" value name="Imagen_Producto" />
-            </td>
-            <td> <input type="text" name="Talla"   value="<?php echo $item['Talla']; ?>" /></td>
-            <td> <input type="text" name="Color"   value="<?php echo $item['Color']; ?>" /></td>
-            <td><input type="text" name="Material"   value="<?php echo $item['Material']; ?>"/></td>
-            <td><input type="text" name="Valor"   value="<?php echo $item['Valor']; ?>"/></td>
-            <td>  <select name="ID_categoria">
+           </div>
+
+            <div class="proingresa1"> Talla: </div>
+            <div class="resp1">
+             <input type="text" name="Talla"   value="<?php echo $item['Talla']; ?>" />
+           </div>
+
+
+           <div class="proingresa2"> Color: </div>
+        <div class="resp2">
+        <input type="text" name="Color"   value="<?php echo $item['Color']; ?>" />
+        </div>
+             
+
+        <div class="proingresa2"> Material: </div>
+        <div class="resp2">
+        <input type="text" name="Material"   value="<?php echo $item['Material']; ?>"/>
+        </div>
+            
+        <div class="proingresa2"> Valor: </div>
+        <div class="resp2">
+        <input type="text" name="Valor"   value="<?php echo $item['Valor']; ?>"/>
+        </div>
+
+            
+
+        <div class="proingresa2"> Categoria: </div>
+          <div class="resp2">       
+
+            <select name="ID_categoria">
             <option> <?php echo $item['Nombre_Categoria']?> </option>
             <?php
-            
-           $Categoria = new Datos();
-           $mostrarCategoria= $Categoria->mostrarCategoria($item["Nombre_Categoria"],"categoria");
-
+          $Categoria = new Datos();
+          $mostrarCategoria= $Categoria->mostrarCategoria($item["Nombre_Categoria"],"categoria");
            if($mostrarCategoria){
             foreach($mostrarCategoria as $rowcat => $itemcat){
-
             ?>
-           <option> <?php echo $itemcat["Nombre_Categoria"]; }} ?> </option>
-          
-            
+           <option> <?php echo $itemcat["Nombre_Categoria"]; }} ?> </option>             
             </select>
-            </td>
+            </div>
 
-          <td>
+
+
+            <div class="proingresa2"> Clasificacion: </div>
+          <div class="resp2">         
+
           <select name="ID_clasificacion" id="">
-
           <option> <?php echo $item["Nombre_Clasificacion"];  ?></option>
-
          <?php
-       
        $Clasificacion = new Datos();
        $mostrarClasificacion = $Clasificacion->mostrarClasificacion($item["Nombre_Clasificacion"],
        "clasificacion");
@@ -214,22 +237,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
         ?>
         <option><?php echo $itemcla["Nombre_Clasificacion"]; }}  ?></option>
         </select>
-      </td>
+        </div>
 
 
-
-
-            <td><input type="text" name="Descripcion"   value="<?php echo $item['Descripcion']; ?>"/></td>
-            <td>
-            <input type="submit" value="Actualizar Datos"  class="btn btn-secondary" class="botones"/>
-                
-                <a href="administaproducto.php" class="btn btn-danger" class="botones">
+        <div class="proingresa2"> Descripcion: </div>
+        <div class="resp2">
+        <input type="text" name="Descripcion"   value="<?php echo $item['Descripcion']; ?>"/>
+        </div>
+        
+        
+        <input type="submit" value="Actualizar Datos" class="guardar">
+      <br>
+                <a href="administraproducto.php" class="volver">
                  Volver Administrar Productos
                 </a>
-              </a>
-            </td>
-          </tr>
-          </form>
+             
+            </form>
+
+        </section>
+
+          
           <?php }} ?>
         </tbody>
       </table>
