@@ -40,9 +40,8 @@
         <div class="contenedor1" id="trabajo">
             <h3>Nuestros Trabajo</h3> 
         
-        <p class="after">Conoce lo que tenemos que ofrecerte.</p>
-        <img src="iconos/moda.png" alt=""width="4%" height="4%">
-        <a href="Producto/Producto_index.php" >TODA LA ROPA</a>
+        <p >Conoce lo que tenemos que ofrecerte.</p>
+        <h4><a href="producto/producto_index.php" class="tdsproductos">"Todos Nuestros Productos"</a></h4>
 
     </div>
 
@@ -124,7 +123,7 @@
         <! --Seccion de inicio de sesion  &nbsp;-->
         <section class="sesion" id="sesion">
             <div class="contenedor">
-                <h3>Iniciar sesión</h3>
+                <h3>Iniciar sesión</h3><br>
                 <div class="iniciarsesion">
 
                     <form action="http://localhost/tiendavirtual/crudservicios/api.php?apicall=loginusuario" method="POST">
@@ -133,10 +132,12 @@
                       <input type="email" name="Correo"><br><br>
                       Ingrese su Contraseña:
                       <input type="password" name="Contrasena"><br><br>
-                     <input type="submit" value="Enviar"/> 
-                      <input type="button" value="Cancelar"/> <br><br>
+                      
+                        <input type="submit" value="Enviar" class="guardar">
+                        <input type="button" value="Cancelar" class="guardar" /> <br><br>
+                    
                       <a href="reestablecercontraseña.php"> ¿Olvido su Contraseña?</a>
-                      <a href="registrarse.html"> Registrarte.</a>
+                      &nbsp;&nbsp;<a href="registrarse.html"> Registrarte.</a>
                       </form>
                     </div>
                     

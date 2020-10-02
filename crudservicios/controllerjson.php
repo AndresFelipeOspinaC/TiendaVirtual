@@ -123,26 +123,13 @@ class Controllerjson{
 
     $respuesta = Datos::updateProductoModel($datosController,"producto");
    
-    
-   
     return $respuesta;
-
-
-
   }
-
-
   public function deleteProductoController($ID_Producto){
 
     $respuesta = Datos::deleteProductoModel($ID_Producto, "producto");
     return $respuesta;
 
   }
- 
-
-
-
-
-
 }
 ?>

@@ -1,4 +1,7 @@
-
+<?php
+session_start();
+if(isset($_SESSION["usuario"])){
+?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -18,11 +21,11 @@
                     <img src="../iconos/logomt.PNG" alt="facebook">
                 </div>
                 <div class="enlaces" id="enlaces">
-                    <a href="../index.html" id="enlace-inicio" class="btn-header">Inicio</a>
-                    <a href="../index.html" id="enlace-trabajo" class="btn-header">Trabajo</a>
-                    <a href="../index.html" id="enlace-servicio" class="btn-header">Servicio</a>
-                    <a href="../index.html" id="enlace-Promocion" class="btn-header">Promocion</a>
-                    <a href="../index.html" id="enlace-contacto" class="btn-header">Contacto</a>
+                    <a href="#" id="enlace-inicio" class="btn-header">Inicio</a>
+                    <a href="#" id="enlace-trabajo" class="btn-header">Trabajo</a>
+                    <a href="#" id="enlace-servicio" class="btn-header">Servicio</a>
+                    <a href="#" id="enlace-Promocion" class="btn-header">Promocion</a>
+                    <a href="#" id="enlace-contacto" class="btn-header">Contacto</a>
                 </div>
                 <div class="icono" id="open">
                     <span>&#9776;</span>
@@ -32,14 +35,15 @@
         <div class="textos">
             <h1>Mis Trapitos</h1>
             <h2>Tienda de Ropa Online</h2>
+            <h3><?php  echo"Bienvenido". " ". $_SESSION["usuario"]?></h3>
+
 <br><br><br>
         </div>
     </header>
 
   <body> <!--   -->
-  <div class="textos2" >
+  <div class="textos2">
   <h2> Todos Nuestros Productos</h2>
-  
 </div>
 
 <section class="productos" id="pro">
@@ -99,3 +103,8 @@ if($mostrarobj){
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
+<?php
+}else{
+    header("location:iniciarsesion.html");
+}
+?>

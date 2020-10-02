@@ -48,7 +48,9 @@
             <div class="resp">
                 <input type="text" name="ID_Usuario"/><br> 
             </div>
-            <input type="submit" value="Ver Contraseña"class="guardar">
+            <input type="submit" value="Ver Contraseña"class="guardar"><br>
+            <a href="index.html">Regresar a la Página Principal</a>
+
         </form>
     </div>
 

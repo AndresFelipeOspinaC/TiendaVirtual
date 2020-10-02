@@ -262,39 +262,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </table>
     </div>
     <!-- 
-<div class="containerform">
-<form action="save.php" method="POST" enctype="multipart/form-data">
 
-Código del Producto <input type="text" name="Producto" placeholder="Escriba el Código del Producto" />
-
-Nombre del Producto: <input type="text" name="Nombre_Producto" id="Nombre_Producto">
-
-Imagen del Producto: <input type="file" name="Imagen" >
-Talla: <input type="text" name="Talla" id="Talla">
-Color: <input type="text" name="Color" id="Color">
-Material: <input type="text" name="Material" id="Materia">
-precio: <input type="text" name="precio" id="precio">
-Descripcion: <input type="text" name="Descripcion" id="Descripcion">
-Categoria: <select name="ID_categoria" id="ID_categoria"> 
-        <option>Chaquetas</option>
-        <option>Pantalones</option>
-        <option>Formal</option>
-        <option>Informal</option>
-        <option >Blusa</option>
-         </select></br>
-Clasificacion: <select name="ID_clasificacion" id="ID_clasificacion"> 
-        <option>Unisex</option>
-        <option>Mujeres</option>
-        <option>Niños</option>
-        <option>Bebes</option>
-        <option>Niñas</option>
-        <option>Hombres</option>
-         </select></br>
-         <input type="submit" value="Guardar">
-         
-         
-</form>
-</div>
 -->
 </div>
 </main>

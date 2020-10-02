@@ -333,21 +333,6 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
                
            break;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     case 'mostrarcontrasena':
         ParametrosDisponibles(array('Correo','ID_Usuario'));
         $db = new Controllerjson();
@@ -356,11 +341,6 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
       $respuesta = $result;
     break;
     
-
-
-
-
-
 
     case 'deleteusuario':
         ParametrosDisponibles(array('ID_Usuario','ID_Tipo_Documento'));
@@ -449,10 +429,7 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
       
       
       default: "";
-      break;
-      
-      
-      
+      break;      
       }
  
       $db = new Controllerjson();
@@ -469,8 +446,6 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
      header("location:../administrador/crud/administraproducto.php");
     }
       
-
-
     break;
 
 
@@ -486,28 +461,12 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
         echo " <h3> Hay Datos Vaciós Por Favor Llenarlos </h3>
         <a href='administraproducto.php'> Volver a Administrar Productos </a>
         <a href='paneladministrador.php'> Ir a Panel de Administración </a>
-        ";
-    
-        
+        "; 
     }
-
-
     else {
-
-
         $ID_Producto = $_POST["ID_Producto"];
       
-        
-      
-      
       $Nombre_Producto = $_POST["Nombre_Producto"];
-      
-      
-      
-      
-      
-      
-      
       
       $Imagen_Producto = $_FILES["Imagen_Producto"] ["name"];
       
@@ -519,12 +478,11 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
       }
 
       else {
-
         $destino = $Imagen_Producto;
       }
 
-
       $Talla = $_POST["Talla"];
+
       $Color = $_POST["Color"];
       
       $Material = $_POST["Material"];
@@ -579,8 +537,6 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
       default: "";
       break;
       
-      
-      
       }
       
       $Descripcion = $_POST["Descripcion"];
@@ -600,8 +556,6 @@ $_POST["Contrasena"]== null)  || ($_POST["ID_Genero"]=="" || $_POST["ID_Genero"]
    header("location:../administrador/crud/administraproducto.php");
 }
 
-
-
 break;
 
 case 'deleteproducto':
@@ -609,9 +563,6 @@ case 'deleteproducto':
     $db = new Controllerjson();
     $result = $db->deleteProductoController($_POST["ID_Producto"]);
     
-
-    
-
     if(!$result){
         $respuesta['error'] = false;
         $respuesta['mensaje'] = 'Producto No Existe';
@@ -622,9 +573,6 @@ case 'deleteproducto':
         header("location:../administrador/crud/administraproducto.php");
     }
 break;
-
-
-
 
     }
 }else{

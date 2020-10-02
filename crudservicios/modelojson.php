@@ -514,16 +514,9 @@ $stmt->bindParam(":ID_Producto", $ID_Producto,PDO::PARAM_STR);
 if($datosModel["Imagen_Producto"] == "../administrador/fotos/".$datosModel["IMG"])
 
  {
-
-
     $IMG="../fotos/".$datosModel["IMG"];
-
-
  }
-
-
  else {
-
     $VolverImagen = new Datos();
     $MostrarImagen= $VolverImagen->volverImagen($datosModel["ID_Producto"],"producto");
 
@@ -532,10 +525,7 @@ if($datosModel["Imagen_Producto"] == "../administrador/fotos/".$datosModel["IMG"
       
      $IMG = $itemimagen["Imagen_Producto"];
 
-      }}
-
-  
-      
+      }}      
  }
 
 $stmt = Database::getconectar()->prepare("UPDATE $tabla set 
@@ -562,9 +552,6 @@ $stmt->bindParam(":ID_Producto", $datosModel["ID_Producto"],PDO::PARAM_STR);
         }else{
             return false;
         } 
-
-
-
  }
    
  public function deleteProductoModel($ID_Producto, $tabla){
@@ -574,10 +561,5 @@ $stmt->bindParam(":ID_Producto", $datosModel["ID_Producto"],PDO::PARAM_STR);
     $stmt->bindParam(":ID_Producto",$ID_Producto, PDO::PARAM_STR);
     $stmt->execute();
 }
-
-
  }
-     
-
-
 ?>
